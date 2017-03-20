@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<h1>Pull requests是什么</h1>
+	<p>有一个仓库，叫Repo A。你如果要往里贡献代码，首先要Fork这个Repo，于是在你的Github账号下有了一个Repo A2,。然后你在这个A2下工作，Commit，push等。然后你希望原始仓库Repo A合并你的工作，你可以在Github上发起一个Pull Request，意思是请求Repo A的所有者从你的A2合并分支。如果被审核通过并正式合并，这样你就为项目A做贡献了</p>
+	<p>简单的说就是一个可以多人合作完成项目，对别人的项目给予建议或修改。</p>
+	<h1>Pull requests的使用</h1>
+	<h2>使用流程</h2>
+	<ol>
+		<li>先 fork 别人的仓库，相当于拷贝一份。</li>
+		<li>clone 到本地分支，做一些 bug fix</li>
+		<li>发起 pull request 给原仓库，让他看到你修改的 bug</li>
+		<li>原仓库 review 这个 bug，如果是正确的话，就会 merge到他自己的项目中 </li>
+		<li>至此，整个 pull request 的过程就结束了。</li>
+	</ol>
+	<p>1. 先点击 fork 仓库，项目现在就在你的账号下了</p>
+	<img src="001.png" alt=""><br>
+	<img src="002.png" alt=""><br>
+	<p>在你自己的机器上 git clone 这个仓库，切换分支（也可以在 master 下），做一些修改。</p>
+	<p>有两种方法一种是使用命令另一种是使用Github客户端</p>
+	<h3>命令的代码是</h3>
+	<p>~  git clone https://github.com/Kylin6/zzz.git </p>
+	<p>~  cd zzz</p>
+	<p>~  git checkout -b test-pr</p>
+	<p>~  git add . && git commit -m "test-pr"</p>
+	<p>~  git push origin test-pr</p>
+	<h3>Github客户端的使用</h3>
+	<img src="003.png" alt="">
+	<p>打开客户端，登陆，克隆再选择要克隆的项目</p>
+	<img src="004.png" alt="">
+	<img src="005.png" alt="">
+	<p>接下来就是对这个项目的修改,客户端会自动检测到你做的修改</p>
+	<img src="006.png" alt="">
+	<img src="007.png" alt="">
+	<p>这些都完成后就是Pull requests了</p>
+	<img src="008.png" alt="">
+	<img src="009.png" alt="">
+	<img src="010.png" alt="">
+	<img src="011.png" alt="">
+	<h3>对方接收</h3>
+	<p>打开项目，Pull requests会提示</p>
+	<img src="012.png" alt="">
+	<img src="013.png" alt="">
+	<p>Pull requests的整个流程就这样结束了。</p>
+</body>
+</html>
