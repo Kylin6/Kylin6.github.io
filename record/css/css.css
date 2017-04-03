@@ -1,0 +1,55 @@
+	body {
+  position: relative;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  cursor: pointer;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+
+@-webkit-keyframes reveal {
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes reveal {
+  100% {
+    opacity: 1;
+  }
+}
+#instruction {
+  position: absolute;
+  bottom: 2vw;
+  right: 2vw;
+  line-height: 0;
+  opacity: 1;
+  font-family: "Raleway", sans-serif;
+  font-size: 12px;
+  margin-top: 1em;
+  color: white;
+}
+
+#title {
+  display: block;
+  position: absolute;
+  top: 75%;
+  left: 50%;
+  font-family: "Knewave", cursive;
+  font-size: 24px;
+  text-align: center;
+  color: white;
+  -webkit-transform: translateX(-50%) translateY(-50%);
+          transform: translateX(-50%) translateY(-50%);
+  pointer-events: none;
+}
+#title::after {
+  content: "A Pen by Chris Caldwell";
+  display: block;
+  font-family: "Raleway", sans-serif;
+  font-size: 12px;
+  margin-top: 1em;
+}
