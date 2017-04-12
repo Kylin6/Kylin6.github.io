@@ -1,0 +1,40 @@
+*{
+	box-sizing: border-box;
+}
+.warpper{
+	max-width: 1200px;
+	min-width: 769px;
+	margin: auto;
+}
+header,footer{
+	border: 1px solid #9df;
+	height: 120px;
+	margin: 10px 0;
+}
+.clearfix{
+	padding: 5px 0;
+}
+.clearfix::after{
+	content: "";
+	display: block;
+	clear: both;
+}
+aside{
+	border: 1px solid #9df;
+	/*min-width: 240px;*/
+	width: 240px;
+	padding: 5px;
+	min-height: 500px;
+	float: left;
+}
+main{
+	border: 1px solid #9df;
+	min-height: 500px;
+	margin-left:255px ;
+	width:auto;
+}
+header ul li{
+	float: right;
+	list-style: none;
+	padding: 5px;
+}
