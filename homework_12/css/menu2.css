@@ -1,0 +1,127 @@
+@charset "utf-8";
+.chearfix::after{
+	content: "";
+	width: 0;
+	display: table;
+	clear: both;
+	height: 0;
+	font-size: 0;
+}
+body,ul{
+	margin: 0;
+	padding: 0;
+}
+.menu{
+	margin-top: 30px;
+	background: deepskyblue;
+	text-align: center;
+	height: 48px;
+	font-size: 16px;
+	box-shadow:1px 1px 3px rgba(0, 0, 0, 0.8);
+}
+.menu ul{
+	margin: auto;
+	display: inline-block;
+}
+.menu ul li{
+	float: left;
+	list-style-type: none;
+	background: deepskyblue;
+	position: relative;
+	display: inline-block;
+}
+
+.menu ul li a{
+	text-align: left;
+	text-decoration: none;
+	color: #000;
+	min-width: 200px;
+	min-height: 48px;
+	text-indent: 30px;
+	line-height: 48px;
+	border-right:solid 1px rgba(0,0,0,0.5) ;
+	transition:text-indent .5s;
+	position: relative;
+	z-index: 1;
+	display: inline-block;
+}
+.menu li a:first-child{
+	border-left:solid 1px rgba(0,0,0,0.5) ;
+}
+.menu li:hover a{
+	color: #fff;
+	text-indent: 50px;
+}
+/*图标*/
+.menu li::before{
+	content: "";
+	position: absolute;
+	top: 10px;
+	left: 20px;
+	width: 24px;
+	height: 24px;
+	font-family: FontAwesome;
+	font-size: 24px;
+	color: #fff;
+	transform: scale(0);
+	transition: all 0.6s;
+}
+.menu li:hover::before{
+	transform: scale(1);
+}
+.menu li:nth-child(1)::before{
+	content: "\f015";
+}
+.menu li:nth-child(2)::before{
+	content: "\f03a";
+}
+.menu li:nth-child(3)::before{
+	content: "\f0ae";
+}
+.menu li:nth-child(4)::before{
+	content: "\f007";
+}
+.menu li:nth-child(5)::before{
+	content: "\f0e0";
+}
+/*阴影*/
+.menu li:after{
+	content: "";
+	position: absolute;
+	left: 20px;
+	right: 20px;
+	top: 20px;
+	bottom: 2px;
+	border-radius: 100%;
+	box-shadow: 0 0 10px 0 rgba(0,0,0,.4);
+	z-index: -1;
+	transition:all .6s;
+}
+.menu li:hover::after{
+	box-shadow: 0 8px 10px 0 rgba(0,0,0,.6);
+}
+
+.menu li ul{
+	position: absolute;
+	/*top: 50px;*/
+	left: 0px;
+	max-height: 0;
+	overflow: hidden;
+	transition: max-height 1s ease;
+	
+	z-index: -1;
+}
+
+.menu li:hover ul{
+	max-height: 220px;
+}
+.c li::before{
+	display: inline-block;
+    content: "";
+    width: 0px;
+    overflow: hidden;
+}
+.menu li ul li{
+	float: none;
+	margin: 10px 0px;
+}
