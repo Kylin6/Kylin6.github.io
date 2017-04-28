@@ -1,0 +1,51 @@
+.clearfix::after{
+	content: "";
+	display: table;
+	clear: both;
+}
+.imagelist {
+	max-width: 1200px;
+	margin: auto;
+}
+.imagelist figure{
+	position: relative;
+	float: left;
+	width: 30%;
+	margin: 0 calc(10%/6);
+	overflow: hidden;
+	cursor: pointer;
+}
+.imagelist figure img{
+	width: 100%;
+	vertical-align: top;
+}
+.imagelist figure figcaption{
+	position: absolute;
+	top: 20px;
+	left: 20px;
+	right: 20px;
+	bottom: 20px;
+	border: 1px solid #fff;
+	outline:20px solid rgba(0,0,0,.7);
+	box-shadow: inset 0px 0px 10px 0px rgba(0,0,0,0);
+	transition: all 0.5s; 
+}
+.imagelist figure figcaption:hover{
+	top: 10px;
+	left: 10px;
+	right: 10px;
+	bottom: 10px;
+	border: 1px solid #fff;
+	outline:10px solid rgba(0,0,0,.4);
+	
+	box-shadow: inset 0px 0px 10px 20px rgba(0,0,0,0.5);
+}
+.imagelist figure figcaption h3{
+	color: #fff;
+	text-align: center;
+	margin-top:100px ;
+	opacity: 0;
+}
+.imagelist figure:hover figcaption h3{
+	opacity: 1;
+}
