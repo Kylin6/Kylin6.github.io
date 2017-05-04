@@ -1,0 +1,73 @@
+.clearfix::after{
+	content: "";
+	display: table;
+	clear: both;
+}
+.imagelist {
+	max-width: 1200px;
+	margin: auto;
+}
+.imagelist *{
+	box-sizing: border-box;
+	transition:all 0.5s ease;
+}
+.imagelist figure{
+	position: relative;
+	float: left;
+	width: 30%;
+	margin:calc(10%/6);
+	overflow: hidden;
+	cursor: pointer;
+	border: 5px solid rgba(255,255,255,1);
+	box-shadow: 0px 0px 10px 0px rgba(0,0,0,.5);
+}
+.imagelist figure img{
+	width: 100%;
+	vertical-align: top;
+	transition: all .5s;
+}
+.imagelist figure:hover img{
+	transform: scale(1.2) rotate(6deg);
+	cursor: pointer;
+}
+.imagelist figure figcaption{
+	position: absolute;
+	color: #fff;
+	z-index: 2;
+	width: 60%;
+	height: 30%;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	right: 0;
+	margin: auto;
+	text-align: center;
+	border: 1px solid #fff;
+	border-bottom: none;
+}
+.imagelist figure figcaption p{
+	margin: 25px;
+	opacity: 0;
+	transition: all .5s;
+}
+.imagelist figure:hover figcaption p{
+	opacity: 1;
+}
+.imagelist figure figcaption::before,
+.imagelist figure figcaption::after{
+	content: "";
+	position: absolute;
+	bottom: 0;
+	width: 50%;
+	
+	border: 1px solid #fff;
+	transition: all .5s ease;
+}
+.imagelist figure figcaption::before{
+	right: 50%;
+
+}
+.imagelist figure:hover figcaption::before,
+.imagelist figure:hover figcaption::after{
+	width: 20%;
+}
