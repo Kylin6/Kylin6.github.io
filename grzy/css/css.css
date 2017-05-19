@@ -1,0 +1,56 @@
+.clearfix::after{
+	content: "";
+	display: block;
+	clear: both;
+}
+ul{
+	list-style-type: none;
+}
+a{
+	text-decoration: none;
+}
+
+body{
+	background-image: url(../img/pexels-photo-201846.jpeg);
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	background-size: 100% 100%;
+	background-position: center top; 
+
+}
+header{
+	margin: 20px;
+}
+.wrapper{
+	position: relative;
+	margin: auto;
+	width: 1200px;
+	padding: 20px;
+}
+.logo img{
+	width: 120px;
+}
+header nav{
+	position: absolute;
+	right: 0px;
+	top: 50px;
+}
+header nav ul li{
+	float: left;
+	margin: 20px 30px;
+}
+header nav ul li a{
+	padding: 20px;
+	border: 1px solid rgba(0,0,0,0);
+	transition: all .5s;
+}
+header nav ul li a:hover{
+	border: 1px solid #efe;
+	color: #ace;
+}
+header .wenzi{
+	color: #fff;
+}
+header .wenzi h1{
+	margin: 50px 0px;
+}
