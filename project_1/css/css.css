@@ -1,0 +1,52 @@
+.clearfix::after{
+	content: "";
+	display: table;
+	clear: both;
+}
+ul{
+	list-style-type: none;
+	padding: 0;
+}
+a{
+	text-decoration: none;
+	color: #fff;
+}
+
+header{
+	width: 100%;
+	background: rgba(0,0,0,.3);
+	height: 80px;
+}
+header .container{
+	padding: 5px 0;
+	max-width: 1200px;
+	margin: auto;
+}
+header .logo{
+	display: inline-block;
+	float: left;
+}
+header .logo span{
+	font-size: 3em;
+	font-family: 'Pacifico', cursive;
+}
+header .logo img,
+header .logo span{
+	vertical-align: middle;
+}
+header .topMenu{
+	float: right;
+	margin-top: 5px;
+}
+header .topMenu ul li{
+	float: left;
+	margin: 0px 20px;
+}
+header .topMenu ul li a{
+	text-shadow: 1px 1px 3px  rgba(0,0,0,.5);
+}
+header .topMenu li.active a,
+header .topMenu li a:hover{
+	color: #339BEB;
+}
+
