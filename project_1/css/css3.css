@@ -6,6 +6,9 @@
 	display: table;
 	clear: both;
 }
+*{
+	box-sizing: border-box;
+}
 .container{
 	max-width: 1200px;
 	margin: auto;
@@ -18,6 +21,9 @@ body{
 ul{
 	list-style-type: none;
 	padding: 0;
+}
+figure{
+	margin: 0;
 }
 a{
 	text-decoration: none;
@@ -228,14 +234,114 @@ section h2+p{
 /*
  * 案例
  * */
-.case .content figure{
-	width: 20%;
-	overflow: hidden;
+.case{
+	margin-bottom: 100px;
+}
+.case .container p a{
+	color: #339BEB;
+}
+.case figure{
 	float: left;
+	overflow: hidden;
+	width: 24%;
 	margin: 10px calc(4% / 3) 10px 0px;
 	position: relative;
 	cursor: pointer;
 }
-.case .content figure img{
+.case figure:nth-child(4n){
+	margin-right: 0;
+}
+.case figure img{
 	width: 100%;
+	height: auto;
+	transform: scale(1) rotate(0deg);
+	transition transform .5s;
+	vertical-align: top;
+}
+.case figure:hover img{
+	transform: scale(1.2) rotate(3deg);
+}
+.case figcaption{
+	position: absolute;
+	top: 50%;
+	left: 5%;
+	right: 5%;
+	bottom: 5%;
+	padding: 10px;
+	
+	background-color: rgba(255,255,255,.8);
+}
+.case figcaption .time{
+	display: block;
+	width: 40px;
+	height: 40px;
+	position: absolute;
+	text-align: center;
+	background-color: #339BEB;
+	/*font-size: 0.8em;*/
+}
+.case figure figcaption .time .month{
+	background-color: rgba(0, 0, 0, 0.1);
+}
+.case figure figcaption h3{
+	margin: 5px 0px 0px 70px;
+}
+.case figure figcaption p{
+	line-height: 1.5;
+	font-size: 0.8em;
+}
+.case figure figcaption .data{
+	position: absolute;
+	height: 20px;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background-color: rgba(0,0,0,.2);
+	text-align: right;
+	font-size: 0.8em;
+}
+.case figure figcaption .data *{
+	padding: 0px 2px;
+}
+/*
+ * 联系我们
+ */
+.contact{
+	background: url(../img/android-1869510_1920.jpg) no-repeat center top ;
+	background-size: cover;
+	color: #fff;
+	height: 500px;
+}
+.contact .left{
+	width: 48%;
+	float: left;
+	margin-right: 4%;
+	line-height: 2;
+}
+.contact .left p{
+	margin-top: 0;
+}
+.contact .left i{
+	padding: 0px 10px 0px 0px;
+}
+.contact .right{
+	float: right;
+	width: 48%;
+	margin-right: 0%;
+}
+.contact .right input,
+.contact .right textarea{
+	width: 100%;
+	padding: 10px 16px;
+	margin: 10px 0;
+	border: none;
+	outline: none;
+	border-radius: 5px;
+	background: rgba(255,255,255,0.6);
+}
+/*
+ footer
+ * */
+footer{
+	text-align: center;
 }
