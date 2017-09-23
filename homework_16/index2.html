@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>表格变色</title>
+		<style type="text/css">
+			*{
+				padding: 0;
+				margin: 0;
+			}
+			#colorTable{
+				border: 1px solid rgba(0,0,0,.2);
+				border-collapse: collapse;
+				margin: 0 auto;
+			}
+			#colorTable td{
+				border: 1px solid rgba(0,0,0,.2);
+				width: 50px;
+				height: 50px;
+			}
+		</style>
+	</head>
+	<body>
+		<input type="button" id="random" value="随机" onclick="random()"/>
+		<input type="button" id="gradient" value="渐变" onclick="gradient()"/>
+		<table id="colorTable">
+			<tr>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+			</tr>
+		</table>
+		<script type="text/javascript">
+				var j,i,timer=null;
+				var oTable = document.getElementById("colorTable");
+				var oTr = document.getElementsByTagName("tr");
+				var oTd = document.getElementsByTagName("td");
+				function  random(){
+					for(i=0;i<oTd.length;i++){
+						oTd[i].style.background="white";
+					}
+					j=0;
+					i=0;
+					clearInterval(timer);
+					timer=setInterval(function(){
+						if(j==100){
+							j=0;
+						}
+						else{
+							
+							i = parseInt(Math.random()*360);
+							oTd[j].style.background="hsla("+i+",50%,50%,.5)";
+							j++;
+						}
+					},100);
+				};
+				function gradient(){
+					for(i=0;i<oTd.length;i++){
+						oTd[i].style.background="white";
+					}
+					j=0;
+					i=0;
+					clearInterval(timer);
+					timer=setInterval(function(){
+						if(j==100){
+							j=0;
+						}
+						else{
+							if(i==360)i=0;
+							else{
+								oTd[j].style.background="hsla("+i+",50%,50%,.5)";
+								i++;
+								j++;
+							} 
+						}
+					},50);
+				};
+		</script>
+	</body>
+</html>
