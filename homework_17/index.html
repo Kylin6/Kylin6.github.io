@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		
+		<style type="text/css">
+			*,
+			*::before,
+			*::after{
+				box-sizing: border-box;
+			}
+			.container{
+				width: 250px;
+				min-height:250px ;
+				margin: 300px auto;
+				position: relative;
+			}
+			.inputGroup{
+				position: relative;
+			}
+			 .inputGroup input{
+				border: none;
+				outline: none;
+				background: none;
+				border: 1px solid #000;
+				height: 30px;
+				position: absolute;
+				cursor: pointer;
+			}
+			.inputGroup .num{
+				height: 30px;
+				width: 200px;
+				border-radius: 20px 0 0 20px;
+				text-indent: 1em;
+			}
+			.inputGroup #guess,
+			.inputGroup #repeat{
+				height: 30px;
+				width: 50px;
+				padding: 0;
+				border-radius:0 20px 20px 0 ;
+				position: absolute;
+				top: 0;
+				right: 0;
+			}
+			.inputGroup #repeat{
+				display: none;
+			}
+			 .resultPanel{
+			 	position: absolute;
+			 	top: 50px;
+			 	width: 300px;
+				max-height: 200px;
+				overflow-y: auto;
+				font-size: 16px;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="container">
+			<div class="inputGroup">
+				<input type="number" class="num" id="num" value="" />
+				<input type="button" id="guess" value="提交" />
+				<input type="button" id="repeat" value="重来" />
+			</div>
+			<div class="resultPanel">
+				<div class="times">剩余次数：<span></span><br></div>
+				<div class="info">猜测历史：<br><span></span></div>
+			</div>
+		</div>
+		<script type="text/javascript">
+			var numRange =10,
+				targetNumber=Math.floor(Math.random()*(numRange+1)),
+				guessTimes=6,
+				numTemp=0;
+			var	oNum = document.getElementById("num"),
+				oGuess = document.getElementById("guess"),
+				oRepeat = document.getElementById("repeat"),
+			    oTimes=document.querySelector(".resultPanel .times span"),
+			    oInfo=document.querySelector(".resultPanel .info span");
+			    
+			    oGuess.addEventListener("click",checkGuess);
+			    oRepeat.addEventListener("click",checkGuess);
+			    oNum.setAttribute('placeholder',"0-"+numRange+"整数，"+guessTimes+"次机会");
+			    console.log(targetNumber);
+			    oTimes.innerHTML=guessTimes;
+			    
+			    function checkGuess(){
+			    	oRepeat.style.display="none";
+					oGuess.style.display="block";
+			    	numTemp=parseInt(oNum.value);
+			    	console.log(numTemp);
+			    	
+			    	if(guessTimes-- >0){
+			    		if(isNaN(numTemp)){
+			    			oInfo.innerHTML+="你怎么不输入，但是这次机会没了。<br>";
+			    		}
+			    		if(numTemp>targetNumber){
+			    			oInfo.innerHTML+="你猜的偏大了。<br>";
+			    		}
+			    		if(numTemp<targetNumber){
+			    			oInfo.innerHTML+="你猜的偏小了。<br>";
+			    		}
+			    		if(numTemp==targetNumber){
+			    			oInfo.innerHTML="恭喜你才对了，还要在来一次吗<br>";
+							repeatGame();
+			    		}
+			    		oNum.value="";
+			    	}
+			    	if(guessTimes==0){
+			    		gameover();
+			    	}
+			    	oTimes.innerHTML=guessTimes;
+			    	
+			    }
+				oRepeat.onclick=function function_name () {
+					oRepeat.style.display="none";
+					oGuess.style.display="block";
+					guessTimes=6;
+					oTimes.innerHTML=guessTimes;	
+					oInfo.innerHTML="游戏已经重新开始，请竞猜<br />";
+				}
+				function repeatGame(){
+					
+					targetNumber=Math.floor(Math.random()*(numRange+1)),
+					oRepeat.style.display="block";
+					oGuess.style.display="none";
+				}
+				function gameover(){
+					
+					oRepeat.style.display="block";
+					oGuess.style.display="none";
+					oInfo.innerHTML+="gameover<br />";
+				}
+		</script>
+	</body>
+</html>
