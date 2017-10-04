@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<style type="text/css">
+			.conter{
+				width:700px;
+				height:500px;
+				margin: 0 auto;
+			}
+			.conter h1{
+				text-align: center;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="conter">
+			<h1>javascript抽奖系统</h1>
+			
+			第一名： <input type="text" class="text" value="" disabled="disabled"/>
+			<br />
+			第二名： <input type="text" class="text" value="" disabled="disabled"/><input type="text" class="text" value="" disabled="disabled"/>
+			<br />
+			第三名： <input type="text" class="text" value="" disabled="disabled"/><input type="text" class="text" value="" disabled="disabled"/><input type="text" class="text" value="" disabled="disabled"/>
+			
+			<input type="button" id="btn" value="抽奖" />
+		</div>
+		<script type="text/javascript">
+			var oTexts = document.getElementsByClassName("text"),
+				obtn   = document.getElementById("btn"),
+				nums = 45,
+				Number = [];
+			//对抽奖按钮添加点击事件
+			btn.addEventListener("click",draw);
+			function draw(){
+				//当这个随机数与之前的数中有相同的，那么i-- 重新获取随机一个数。
+				for(var i=0;i<6;i++)
+				{
+					Number[i]=Math.floor(Math.random()*nums+1);
+					for(var j=0;j<i;j++)
+					{
+						if(Number[i]==Number[j])
+							i--;
+					}
+				}
+				//将数组中的数传入到文本框中
+				for(var i=0;i<6;i++){
+					oTexts[i].value=Number[i];
+				}
+			}
+			
+		</script>
+	</body>
+</html>
