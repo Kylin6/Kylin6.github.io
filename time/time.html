@@ -1,0 +1,51 @@
+<html>
+	<head>
+		<style>
+			body{
+				position: relative;
+				background-color: #000;
+			}
+			#txt{
+				width: 523px;
+				height: 200px;
+				line-height: 200px;
+				background-color: transparent;
+				border: 20px solid #fff;
+				border-radius: 50px;
+				position: absolute;
+				top: 0;
+				bottom: 0;
+				left: 0;
+				right: 0;
+				margin: auto;
+			}
+		</style>
+		<script type="text/javascript">
+			function startTime() {
+				
+				var today = new Date()
+				var h = today.getHours()
+				var m = today.getMinutes()
+				var s = today.getSeconds()
+				// add a zero in front of numbers<10
+				m = checkTime(m)
+				s = checkTime(s)
+				document.getElementById('txt').innerHTML = h + ":" + m + ":" + s
+				document.getElementById('txt').style.fontSize="130px"//修改显示出来的字体大小
+				document.getElementById('txt').style.color='#fff';
+				t = setTimeout('startTime()', 500)
+			}
+			function checkTime(i) {
+				if(i < 10) {
+					i = "0" + i
+				}
+				return i
+			}
+		</script>
+	</head>
+
+	<body onload="startTime()">
+		<div id="txt"></div>
+	</body>
+
+</html>

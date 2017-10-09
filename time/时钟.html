@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8"/>
+   <title>时钟</title>
+   <style type="text/css">
+   	body{
+   		background-color: #000;
+   		color: #fff;
+   		font-size: 50px;
+   		line-height: 300px;
+   	}
+   	img{
+   		width: 200px;
+   		margin-top: 50px;
+   	}
+   	span{
+   		font-size: 200px;
+   		
+   	}
+   </style>
+   <script type="text/javascript">
+   	function toDou(n)
+   	{
+   		if(n<10)
+   		{
+   			return '0'+n;
+   		}
+   		else
+   		{
+   			return ""+n;
+   		}
+   	}
+
+   	window.onload=function(){
+   		var aImg=document.getElementsByTagName('img');
+// 		var str="012321";
+
+		   	function take()
+	   		{
+		   		var oDate=new Date();
+				var str=toDou(oDate.getHours())+toDou(oDate.getMinutes())+toDou(oDate.getSeconds());
+				//alert(str);
+		   		
+		   		for(var i=0;i<aImg.length;i++)
+		   		{
+		   			aImg[i].src='img/'+str[i]+'.png';
+		   		}
+	   		};
+   		window.setInterval(take,1000);
+   		take();
+   	};
+   </script>
+</head>
+<body>
+<img src="img/0.png" alt="" />
+<img src="img/0.png" alt="" />
+<span>:</span>
+<img src="img/0.png" alt="" />
+<img src="img/0.png" alt="" />
+<span>:</span>
+<img src="img/0.png" alt="" />
+<img src="img/0.png" alt="" />
+</body>
+</html>
