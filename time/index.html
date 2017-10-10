@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<style>
+			.clock{
+				width: 200px;
+				height: 200px;
+				background: url(img/clock.jpg);
+				background-size: 100% 100%;
+				position: relative;
+			}
+			.hour{
+				width: 3px;
+				height: 30px;
+				background-color: #f00;
+				transform-origin: bottom center;
+				position: absolute;
+				left: 100px;
+				top: 70px;
+			}
+			.min{
+				width: 2px;
+				height: 40px;
+				background-color: #000;
+				transform-origin: bottom center;
+				position: absolute;
+				left: 100px;
+				top: 59px;
+			}
+			.sec{
+				width: 1px;
+				height: 50px;
+				background-color: #000;
+				transform-origin: bottom center;
+				position: absolute;
+				left: 100px;
+				top: 50px;
+			}
+		</style>
+	</head>
+	<body>
+		<!--<input type="text" name="text" id="text" value="" />
+		<button onclick="int=window.clearInterval(int)">stop</button>-->
+		<div class="clock">
+			<div class="hour"></div>
+			<div class="min"></div>
+			<div class="sec"></div>
+		</div>
+		
+		<script type="text/javascript">
+			
+			//Date对象
+			//时钟，计时器S
+			var now=new Date();
+			var hour,min,sec;
+			var oClock=document.querySelector('.clock');
+			var oHour=document.querySelector('.hour');
+			var omin=document.querySelector('.min');
+			var osec=document.querySelector('.sec');
+			function refresh() {
+				now=new Date();
+				hour=now.getHours();
+				min=now.getMinutes();
+				sec=now.getSeconds();
+				oHour.style.transform="rotate("+(now.getHours()+now.getMinutes()/60+now.getSeconds()/3600)*30+"deg)";
+				omin.style.transform="rotate("+(now.getMinutes()+now.getSeconds()/60)*6+"deg)";
+				osec.style.transform="rotate("+sec*6+"deg)";
+			}
+			refresh();
+			setInterval(refresh,1000);
+		</script>
+	</body>
+</html>
