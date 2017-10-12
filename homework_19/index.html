@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			body,
+			html {
+			  height: 100%;
+			  background: #cccccc;
+			  color: #fff;
+			}
+			
+			h1,h2{
+				margin: 100px;
+				font-size: 4em;
+				text-align: center;
+			}
+		</style>
+	</head>
+	<body>
+		<h1 class="title">
+			123456789
+		</h1>
+		<h2 class="text">
+			123456789
+		</h2>
+		<script type="text/javascript">
+			var oH1=document.querySelector(".title");
+			var oH2=document.querySelector(".text");
+			function typetext(ele,speed,loop){
+				var 
+					str=ele.innerText,
+					i=0,
+					loop=loop||false;
+				ele.innerHTML="";
+				
+				var a=setInterval(function (){
+					if(i<str.length){
+						ele.innerText+=str[i];
+					}else{
+						if(loop){
+							i=-1;
+							ele.innerText="";
+						}else{
+							clearInterval(a);
+						}
+					}i++;
+				},speed);
+				
+			}
+			typetext(oH1,100);
+			typetext(oH2,200,true);
+		</script>
+		
+	</body>
+</html>
