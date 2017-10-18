@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>tab 闭包的实现</title>
+	</head>
+	<body>
+		<div class="tab">
+			<input type="button" id="" value="1" />
+			<input type="button" id="" value="2" />
+			<input type="button" id="" value="3" />
+		</div>
+		<div class="box"></div>
+		<script type="text/javascript">
+			/*
+			闭包三个条件
+				访问所在作用域
+				函数嵌套
+				在所在作用域外被调用
+			*/
+			var obtn=document.querySelectorAll(".tab input");
+			var obox=document.querySelectorAll(".box");
+			var i;
+			for (i=0;i<obtn.length;i++) {
+				//添加监听
+				obtn[i].addEventListener("click",(function(index){
+					return function(){
+						//由于class有多个，它为数组，因此这里用obox[0]。
+						obox[0].innerText="你点击了"+index+"按钮";
+						console.log("你点击了"+index+"按钮");
+					};
+				}(i+1)));   //index的返回值为i+1，由于i从0开始，按钮从1开始，所以+1。
+			}
+		</script>
+	</body>
+</html>
