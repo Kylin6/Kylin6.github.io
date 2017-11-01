@@ -1,0 +1,60 @@
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>放大镜</title>
+		<style type="text/css">
+			#abc{
+				width: 600px;
+				position: absolute;
+				left: 100px;
+				top: 100px;
+				overflow: hidden;
+			}
+			img{
+				width: 100%;
+			}
+			#son{
+				width: 100px;
+				height: 100px;
+				background: #000;
+				position: absolute;
+				top: 0;
+				left: 0;
+				transform: translate(-50%, -50%);
+				display: none;
+				pointer-events: none;
+				border-radius: 50%;
+				background: url(img/001.jpg);
+				border: 1px solid #000;
+			}
+			#abc:hover #son{
+				display: block;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="abc">
+		<img id="img" src="img/001.jpg"/>
+		<div id="son"></div>	
+		</div>
+		<script type="text/javascript">
+			var oAbc=document.getElementById("abc");
+			var oSon=document.getElementById("son");
+			var img=document.getElementById("img");
+			var ratio;
+			img.addEventListener("load",function(event) {
+				ratio=img.naturalWidth/img.width;
+				console.log(img.na)
+			})
+			oAbc.addEventListener("mousemove",function(event){
+			var x=event.offsetX;
+			var y=event.offsetY;
+			oSon.style.left=x+"px";
+			oSon.style.top=y+"px";
+			oSon.style.backgroundPosition=(-ratio*x+30)+"px "+(-ratio*y+30)+"px";
+			});
+		</script>
+	</body>
+</html>
