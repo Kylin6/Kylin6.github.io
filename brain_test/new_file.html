@@ -1,0 +1,108 @@
+
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>11.11</title>
+		<link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+		<style type="text/css">
+			body {
+				background: url(img/bg01.png) no-repeat;
+				background-size: 1530px;
+				
+			}
+			
+			.img {
+				position: absolute;
+				top: 35px;
+				left: 170px;
+			}
+			
+			.bomb {
+				display: none;
+				z-index:999;
+				position: relative;
+			}
+			
+			.action {
+				top: -20px;
+				position: relative;
+				margin: auto;
+				width: 2px;
+				height: 380px;
+				background-color: orange;
+				transform-origin: top;
+				animation: swing 2s infinite ease-in-out ;
+				z-index:10;
+			}
+			
+			@keyframes swing {
+				0% {
+					transform: rotate(20deg);
+				}
+				50% {
+					transform: rotate(-20deg);
+				}
+				100% {
+					transform: rotate(20deg);
+				}
+			}
+			
+			.circle {
+				position: relative;
+				top: 300px;
+				left: -145px;
+				width: 300px;
+				height: 200px;
+				background-image: url(img/t01e8449bd29e7679c6.png);
+			}
+			.down{
+				position: absolute;
+				width: 20px;
+				height: 20px;
+				top: 200px;
+				right: 400px;
+				
+			}
+		</style>
+	</head>
+
+	<body>
+		<img class="img" src="t0169cae88796676b61.gif" alt="" />
+		<div class="bomb">
+			<div class="action">
+				<a href="http://gouwu.360.cn/zt/z1111">
+					<div class="circle"></div>
+				</a>
+			</div>
+			<div class="down"><i class="fa fa-times" aria-hidden="true"></i></div>
+		</div>
+		
+		<script type="text/javascript">
+			var oimg = document.querySelector(".img");
+			var obomb = document.querySelector(".bomb");
+			var odown = document.querySelector('.down');
+			var oaction = document.querySelector('.action');
+			oimg.onclick = function() {
+				oimg.style.display = "none";
+				obomb.style.display = "block";
+				setTimeout(function() {
+					oimg.style.display = "block";
+					obomb.style.display = "none";
+				}, 10000);
+			}
+			odown.addEventListener("mousemove",function(){
+				oaction.style.animation='none';
+			});
+			odown.addEventListener("click",function(){
+				oimg.style.display = "block";
+				obomb.style.display = "none";
+			});
+			odown.addEventListener("mouseout",function(){
+				oaction.style.animation='swing 2s infinite ease-in-out';
+			});
+		</script>
+	</body>
+
+</html>

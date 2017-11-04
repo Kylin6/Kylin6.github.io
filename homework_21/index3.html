@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			.zoomPic{
+				width: 450px;
+				margin: 20px;
+				border: 1px solid #000;
+				position: relative;
+			}
+			.zoomHandler{
+				position: fixed;
+				border: 1px solid rgba(0,0,0,.1);
+				pointer-events: none;
+				transform: translate(-50%,-50%);
+			}
+		</style>
+	</head>
+	<body>
+		<img src="img/FE.jpg" class="zoomPic"/>
+		<img src="img/001.jpg" class="zoomPic"/>
+		<img src="img/FE.jpg" class="zoomPic"/>
+		<script type="text/javascript">
+			(function(){
+				var ratio=[];
+				var zoompic=document.querySelectorAll(".zoomPic");
+				if(zoompic==0)
+				{
+					return false;
+				}
+				var zoomHandler=document.createElement('div');
+				zoomHandler.className='zoomHandler';
+				document.body.appendChild(zoomHandler);
+				
+				for(var i=0;i<zoompic.length;i++)
+				{
+					zoompic[i].setAttribute("id",i+1);
+					
+					zoompic[i].addEventListener("load",function(event){
+						var event =event||window.event;
+						var target =event.target||event.srcElement;
+						var j =parseInt(target.getAttribute('id'));
+						ratio[j]=target.naturalWidth/target.width;
+						console.log(ratio[j]);
+					});
+					zoompic[i].addEventListener("mousemove",function(event){
+						var event =event||window.event;
+						var target =event.target||event.srcElement;
+						var j =parseInt(target.getAttribute('id'));
+						
+						var cx=event.clientX;
+						var cy=event.clientY;
+						
+						var ox=event.offsetX||event.layerX;
+						var oy=event.offsetY||event.layerY;
+						var zandlewidth=100;
+						var zandleheight=100;
+						zoomHandler.style.display='block';
+					    zoomHandler.style.width=zandlewidth+"px";
+					    zoomHandler.style.height=zandleheight+"px";
+					    zoomHandler.style.left=cx+"px";
+					    zoomHandler.style.top=cy+"px";
+					    zoomHandler.style.backgroundImage='url('+target.src+')';
+						zoomHandler.style.backgroundPosition=(-ratio[j]*ox+zandlewidth/2)+"px "+(-ratio[j]*oy+zandleheight/2)+"px";
+					});
+					zoompic[i].addEventListener("mouseout",function(){
+						zoomHandler.style.display="none";
+					});
+					
+				}
+				
+			})();
+		</script>
+	</body>
+</html>
