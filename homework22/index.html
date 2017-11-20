@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<title>菜单</title>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+		<link rel="stylesheet" type="text/css" href="css/tab.css" />
+	</head>
+
+	<body>
+		<div class="head">
+			<i class="fa fa-bars button" id='button' aria-hidden="true"></i> &nbsp;&nbsp;&nbsp;Pure js menu
+		</div>
+		<div class="menu">
+			<ul id="menu_1">
+				<li class="item">Item1&nbsp;<i class="fa fa-angle-right" aria-hidden="true"></i></li>
+				<ul class="sub">
+					<li>item1</li>
+					<li>item2</li>
+					<li>item3</li>
+				</ul>
+			</ul>
+			<ul id="menu_2">
+				<li class="item">Item2&nbsp;<i class="fa fa-angle-right" aria-hidden="true"></i></li>
+				<ul class="sub">
+					<li>item1</li>
+					<li>item2</li>
+					<li>item3</li>
+				</ul>
+			</ul>
+			<ul id="menu_3">
+				<li class="item">Item3&nbsp;<i class="fa fa-angle-right" aria-hidden="true"></i></li>
+				<ul class="sub">
+					<li>item1</li>
+					<li>item2</li>
+					<li>item3</li>
+				</ul>
+			</ul>
+			<ul id="menu_4">
+				<li class="item">Item4&nbsp;<i class="fa fa-angle-right" aria-hidden="true"></i></li>
+				<ul class="sub">
+					<li>item1</li>
+					<li>item2</li>
+					<li>item3</li>
+				</ul>
+			</ul>
+			<ul id="menu_5">
+				<li class="item">Item5&nbsp;<i class="fa fa-angle-right" aria-hidden="true"></i></li>
+				<ul class="sub">
+					<li>item1</li>
+					<li>item2</li>
+					<li>item3</li>
+				</ul>
+			</ul>
+		</div>
+		<script type="text/javascript">
+			var oBtn = document.querySelector('#button');
+			var oMenu = document.querySelector('.menu');
+			var oItem = document.querySelectorAll('.item');
+			var oSub = document.querySelectorAll('.sub');
+			var oR = document.querySelectorAll('.fa-angle-right');
+			var vBtn = false,
+				vItem = new Array(),
+				num = window.screen.availHeight ;
+
+			oBtn.onclick = function() {
+				if(!vBtn) {
+					oMenu.style.height = num + 'px';
+					oBtn.style.transform = 'rotate(90deg)';
+					vBtn = true;
+				} else {
+					oMenu.style.height = 0;
+					oBtn.style.transform = 'rotate(0deg)';
+					vBtn = false;
+				}
+			}
+
+			for(var i = 0; i < oItem.length; i++) {
+				vItem[i] = false;
+				(function(i) {
+					oItem[i].addEventListener('click', function() {
+						if(!vItem[i]) {
+							num += 130;
+							oSub[i].style.height = 130 + 'px';
+//							oMenu.style.height = num + 'px';
+							oR[i].style.transform = 'rotate(90deg)';
+							vItem[i] = true;
+						} else {
+							num -= 130;
+							oSub[i].style.height = 0;
+//							oMenu.style.height = num + 'px';
+							oR[i].style.transform = 'rotate(0deg)';
+							vItem[i] = false;
+						}
+					});
+				})(i);
+			}
+		</script>
+	</body>
+
+</html>
