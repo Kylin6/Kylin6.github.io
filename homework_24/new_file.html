@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<style type="text/css">
+		
+			a{
+				position: relative;
+				display: inline-block;
+				margin: 20px;
+			}
+			span{
+				display: none;
+				width: 80px;
+				position: absolute;
+				top: -30px;
+				left: -30px;
+				background: black;
+				color: white;
+				text-align: center;
+			}
+			a:hover span{
+				display: block;
+			}
+
+			.toolitp span::after {
+				content: " ";
+				width: 0;
+				height: 0;
+				position: absolute;
+			}
+			.toolitp[data-direction = "top"] span::after {
+				top: 100%;
+				left: 40%;
+				border: 8px solid #000;
+				border-color: black transparent transparent; 
+			}
+			.toolitp[data-direction = "botton"] span{
+				
+				top: 30px;
+				left: -30px;
+				background: black;
+				color: white;
+				text-align: center;
+			}
+			.toolitp[data-direction = "botton"] span::after {
+				top: -75%;
+				left: 38%;
+				border: 8px solid #000;
+				border-color:transparent transparent black ; 
+			}
+			.toolitp[data-direction = "left"] span{
+				top: 0px;
+				left: -90px;
+				background: black;
+				color: white;
+				text-align: center;
+			}
+			.toolitp[data-direction = "left"] span::after {
+				top: 3px;
+				left: 80px;
+				border: 8px solid #000;
+				border-color:transparent  transparent transparent black; 
+			}
+			.toolitp[data-direction = "right"] span{
+				top: 0px;
+				left: 30px;
+				background: black;
+				color: white;
+				text-align: center;
+			}
+			.toolitp[data-direction = "right"] span::after {
+				top: 3px;
+				left: -16px;
+				border: 8px solid #000;
+				border-color:transparent  black transparent transparent ; 
+			}
+			
+		</style>
+	</head>
+	<body>
+		<p>这是一些提示按钮</p>
+		<a href="#" class="toolitp"  data-direction = "top">上</a>
+		<a href="#" class="toolitp"  data-direction = "botton">下</a>
+		<a href="#" class="toolitp"  data-direction = "left">左</a>
+		<a href="#" class="toolitp"  data-direction = "right">右</a>
+		<script type="text/javascript">
+			(function(){
+				var litp=document.querySelectorAll(".toolitp");
+				for(var i=0;i<litp.length;i++)
+				{
+					var content=document.createElement("span");
+					content.innerHTML=litp[i].getAttribute('data-direction');
+					litp[i].appendChild(content);
+				}
+				
+			})();
+		</script>
+	</body>
+</html>
