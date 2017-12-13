@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>新闻滚动效果</title>
+		<style type="text/css">
+			.a{
+				border: 1px dashed #000;
+				width: 600px;
+			}
+			.b{
+				overflow: hidden;
+				margin: 0;
+				padding: 0;
+			}
+			li{
+				list-style: none;
+				margin: 0;
+				padding: 0;
+				height: 18px;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="a">
+			<ul class="b">
+				<li>神州优车发布全新战略 由“汽车出行”升级为“汽车生活”平台</li>
+				<li>河北银监局：批准工行、农行、中行、建行筹建雄安分行</li>
+				<li>戴森召回逾10万台进口空气净化暖风器：产品说明书存缺陷</li>
+				<li>每日优鲜CEO：我觉得无人零售店是伪命题</li>
+				<li>国家互金分析平台正式获批 国家互联网应急中心运营</li>
+				<li>谷歌：东南亚互联网经济规模今年将达500亿美元</li>
+			</ul>
+		</div>
+		<script type="text/javascript">
+			/*
+			var oa=document.querySelector('.a');
+			var ob=document.querySelector('.b');
+			var oli=document.querySelectorAll('.b li');
+			ob.style.height='36px';
+			ob.innerHTML+=ob.innerHTML;
+			function run(){
+				if(ob.scrollTop>108){
+					ob.scrollTop=1;
+					setTimeout(run,100);
+				}
+				else{
+					ob.scrollTop++;
+					if(ob.scrollTop%36==0)
+					setTimeout(run,1000);
+					else
+						setTimeout(run,100);
+				}
+			}
+			run();
+			*/
+			var oa=document.querySelector('.a');
+			var ob=document.querySelector('.b');
+			var oli=document.querySelectorAll('.b li');
+			var runhight=oli[0].offsetHeight*2;
+			ob.style.height=runhight+'px';
+			ob.innerHTML+=ob.innerHTML;
+			function run(){
+				if(ob.scrollTop>runhight*3)
+				{ob.scrollTop=0}
+				else ob.scrollTop++;
+				if(ob.scrollTop%runhight==0)setTimeout(run,1000);
+				else setTimeout(run,100);
+			}
+			run();
+		</script>
+	</body>
+</html>
