@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8">
+		<title>瀑布流的实现</title>
+		<style>
+			/*使用通配符将内外边距都设置为零, 这样看着好看*/
+			
+			* {
+				margin: 0px;
+				padding: 0px;
+			}
+			/*将主容器的布局方式设置为相对布局*/
+			
+			#content {
+				position: relative;
+			}
+			
+			.box {
+				padding: 5px;
+				float: left;
+			}
+			/*将承载图片的容器定制颜色及边框大小和圆角*/
+			
+			.boximg {
+				padding: 5px;
+				box-shadow: 0 0 5px #ccc;
+				border: 1px solid #cccccc;
+				border-radius: 5px;
+			}
+			/*定制图片尺寸*/
+			
+			.boximg img {
+				width: 250px;
+				height: auto;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="content">
+			<div class="box">
+				<div class="boximg">
+					<img src="images/1.jpg" alt="">
+				</div>
+			</div>
+			<div class="box">
+				<div class="boximg">
+					<img src="images/2.jpg" alt="">
+				</div>
+			</div>
+			<div class="box">
+				<div class="boximg">
+					<img src="images/3.jpg" alt="">
+				</div>
+			</div>
+			<div class="box">
+				<div class="boximg">
+					<img src="images/4.jpg" alt="">
+				</div>
+			</div>
+			<div class="box">
+				<div class="boximg">
+					<img src="images/5.jpg" alt="">
+				</div>
+			</div>
+			<div class="box">
+				<div class="boximg">
+					<img src="images/6.jpg" alt="">
+				</div>
+			</div>
+			<div class="box">
+				<div class="boximg">
+					<img src="images/7.jpg" alt="">
+				</div>
+			</div>
+			<div class="box">
+				<div class="boximg">
+					<img src="images/8.jpg" alt="">
+				</div>
+			</div>
+			<div class="box">
+				<div class="boximg">
+					<img src="images/9.jpg" alt="">
+				</div>
+			</div>
+			<div class="box">
+				<div class="boximg">
+					<img src="images/10.jpg" alt="">
+				</div>
+			</div>
+			<div class="box">
+				<div class="boximg">
+					<img src="images/11.jpg" alt="">
+				</div>
+			</div>
+			<div class="box">
+				<div class="boximg">
+					<img src="images/12.jpg" alt="">
+				</div>
+			</div>
+			<div class="box">
+				<div class="boximg">
+					<img src="images/13.jpg" alt="">
+				</div>
+			</div>
+			<div class="box">
+				<div class="boximg">
+					<img src="images/14.jpg" alt="">
+				</div>
+			</div>
+			<div class="box">
+				<div class="boximg">
+					<img src="images/15.jpg" alt="">
+				</div>
+			</div>
+		</div>
+
+		<script type="text/javascript">
+
+            //窗口加载的时候调用执行  waterFlow() 方法 （传入 "content 以及  box 两个参数"）
+			window.onload = function() {
+				waterFlow("content", "box");
+			
+			}
+
+            
+            
+            // waterFlow() 方法  包含两个参数（parent == "content" ， chirld == "box"）
+			function waterFlow(parent, chirld) {
+				
+				//获取父级div, 最外级容器 （ class 值为 content 的 div ）
+				var wparent = document.getElementById(parent); 
+				
+				//执行  getAllChirld 方法  （同样含有两个参数传入）  getAllChirld（）方法写在这个方法的后面  , 这个方法是为了获取到所有的class为box的容器div
+		 		var allArr = getAllChirld(wparent, chirld);
+		 		
+		 		//获取屏幕宽度
+				var wscreenWidth = document.documentElement.clientWidth; 
+				
+				//获取所有 class 为 content 下的所有标签
+				var wchirldWidth = wparent.getElementsByTagName("*"); 
+				
+				//这是一个Math算法, 目的是将小数转变为整数,从而可以知道每行最多容纳几张图片，屏幕宽度 / class 为 box 的div 的宽度
+				var num = Math.floor(wscreenWidth / wchirldWidth[0].offsetWidth); 
+
+                //固定每行摆放个数 和上下左右边距
+				wparent.style.cssText = 'width:' + wchirldWidth[0].offsetWidth * num + 'px;margin:0 auto'; 
+				
+				//调用后面的 getMinHeightOfCols()方法，获得每行的最小高度（即当前行中高度最小的图片）
+				getMinHeightOfCols(allArr, num);
+			}
+
+           
+            //getAllChirld() 方法  包含两个参数  （parent == wparent == "content"  classname == chirld == "box"）
+			function getAllChirld(parent, classname) {
+				
+				//获取 class 为 content 的div 下所有的标签
+				var wchirld = parent.getElementsByTagName("*");
+				
+				//创建 chirldArr 数组
+				var chirldArr = [];
+				
+				//遍历wchirld, 将其中className等于classname(传进来的参数)相同的标签放入数组chirldArr中
+				for(var i = 0; i < wchirld.length; i++) {
+					
+					if(wchirld[i].className == classname) {
+						//因为是位push所以没放进去一个, 都是在数组的最后一个
+						chirldArr.push(wchirld[i]);
+					}
+				}
+				//返回该数组
+				return chirldArr;
+			}
+
+            
+            // getMinHeightOfCols（）方法  来获取当前行内所包含图片高度最小的容器  参数（chirdArr 为 上个方法所返回的 chirldArr数组  num为每行最多容纳的图片数量）
+			function getMinHeightOfCols(chirdArr, num) {
+				
+				//创建数组, 用来盛放每一行的高度
+				var onlyOneColsArr = [];
+				
+				//遍历chirldArr 数组
+				for(var i = 0; i < chirdArr.length; i++) {
+
+					if(i < num) {
+						//num为传进来的参数, 即为每行放图片的张数, 此步骤的目的是为了将第一行每张图片的高度遍历出来存放如新数组
+						onlyOneColsArr[i] = chirdArr[i].offsetHeight;
+					} 
+					
+					else {
+						
+						//定义minHeightOfCols 并赋值为最小值，当大于每行存放的图片个数时进入该方法, Math.min.apply这个方法是为了得到数组中的最小值（不懂的可以自己百度这个方法）
+						var minHeightOfCols = Math.min.apply(null, onlyOneColsArr);
+						
+						//调用 getminIndex（）方法，传入onlyOneColsArr 数组 以及最小值，此方法的目的是为了得到最小高度图片的下表, 也就是在每行的第几张, 具体方法见下面
+						var minHeightOfindex = getminIndex(onlyOneColsArr, minHeightOfCols);
+						
+						//定义每个 class 为 box 的布局方式为绝对布局
+						chirdArr[i].style.position = "absolute";
+						
+						//得到下一行图片应放的高度（上一行图片中的最小高度）
+						chirdArr[i].style.top = minHeightOfCols + "px";
+						
+						//得到下一行图片应放于那个位置（上一行图片中高度最小的图片的left值）
+						chirdArr[i].style.left = chirdArr[minHeightOfindex].offsetLeft + "px";
+						
+						//将两张图片高度相加得到一个新的高度用来进行下一次的计算
+						onlyOneColsArr[minHeightOfindex] += chirdArr[i].offsetHeight;
+					}
+				}
+
+			}
+			//此方法是为了进行最小高度图片下标的确定（min 为minHeightOfCols）
+			function getminIndex(onlyOneColsArr, min) {
+				
+				//遍历传进来的高度数组
+				for(var i in onlyOneColsArr) {
+					//如果高度等于最小高度, 返回i即为该图片下标
+					if(onlyOneColsArr[i] == min) {
+						return i;
+					}
+				}
+			}
+		</script>
+
+	</body>
+
+</html>
