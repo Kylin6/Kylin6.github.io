@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			body {
+				background: url(img/bg1.jpg);
+				background-size: cover;
+			}
+			
+			ul {
+				margin: 0;
+				padding: 0;
+				overflow: hidden;
+				height: 90px;
+			}
+			
+			li {
+				list-style-type: none;
+				margin: 0;
+				padding: 0;
+				height: 90px;
+				color: #fff;
+			}
+			.a{
+				margin: 200px auto;
+				width: 420px;
+				height: 300px;
+				padding: 30px;
+				position: relative;
+				background-color:rgba(0,0,0,0.2) ;
+			}
+			input {
+				margin: 3px;
+			}
+			
+			h3 {
+				margin: 15px;
+				margin-top: 0;
+			}
+			
+			#last {
+				position: absolute;
+				display: none;
+				left: 20px;
+			}
+			
+			#next {
+				position: absolute;
+				left: 80px;
+			}
+			
+			#go {
+				position: absolute;
+				left: 140px;
+				display: none;
+			}
+			
+			.left,
+			.rigth {
+				position: absolute;
+				top: 180px;
+				width: 400px;
+				display: none;
+				color: #FFFFFF;
+			}
+			
+			.content,
+			#again {
+				display: none;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="a">
+			<input type="button" id="play" value="开始测试" />
+			<input type="button" id="again" value="重新开始" />
+			<div class="content">
+				<ul>
+					<li>
+						<h3>1.遇到困难的时候，你通常会：</h3>
+						<input type="radio" value="" name="1" />认真分析形势及解决方案，三思后行<br />
+						<input type="radio" value="" name="1" />凭直觉走下一步<br />
+					</li>
+					<li>
+						<h3>2.两个旅游方案，你更偏好：</h3>
+						<input type="radio" value="" name="2" />冒险、富有挑战的路线<br />
+						<input type="radio" value="" name="2" />不太喜欢冒险，我会选择舒适安全的<br />
+					</li>
+					<li>
+						<h3>3.在音乐方面：</h3>
+						<input type="radio" value="" name="3" />喜欢音乐，自小就乐感很好<br />
+						<input type="radio" value="" name="3" />对音乐无感<br />
+					</li>
+					<li>
+						<h3>4. 在理财方面：  </h3>
+						<input type="radio" value="" name="4" />你能大概清楚自己的日常花销 <br />
+						<input type="radio" value="" name="4" />经常有“钱都花在哪儿了”的感叹 <br />
+					</li>
+					<li>
+						<h3>5. 与陌生人初次会面时：  </h3>
+						<input type="radio" value="" name="5" />对方的谈吐更让你在意 <br />
+						<input type="radio" value="" name="5" />对方的穿着更让你在意 <br />
+					</li>
+					<li>
+						<h3>6. 当你在思考的时候：  </h3>
+						<input type="radio" value="" name="6" />脑海中出现的大多是一个个语句 <br />
+						<input type="radio" value="" name="6" />脑海中出现的大多是图形、图片 <br />
+					</li>
+					<li>
+						<h3>7. 在时间管理方面：</h3>
+						<input type="radio" value="" name="7" />你做事井井有条，时间分配得当 <br />
+						<input type="radio" value="" name="7" />你经常为拖延症感到焦虑和懊恼 <br />
+					</li>
+					<li>
+						<h3>8. 下面哪项任务更让你感到头痛和束手无策？</h3>
+						<input type="radio" value="" name="8" />做一份数据分析报告 <br />
+						<input type="radio" value="" name="8" />去郊外完成一幅写生 <br />
+					</li>
+					<li>
+						<h3>9. 看电影的时候经常感动到流泪？</h3>
+						<input type="radio" value="" name="9" />是的 <br />
+						<input type="radio" value="" name="9" />不是 <br />
+					</li>
+					<li>
+						<h3>10. 你觉得更符合你的特征是：</h3>
+						<input type="radio" value="" name="10" />沉稳靠谱 <br />
+						<input type="radio" value="" name="10" />灵活创意 <br />
+					</li>
+					<li>
+						<h3>11. 以下更符合你的实际情况的是： </h3>
+						<input type="radio" value="" name="11" />先处理简单的事情，后处理重要的事情 <br />
+						<input type="radio" value="" name="11" />先处理重要的事情，后处理简单的事情 <br />
+					</li>
+				</ul>
+				<input type="button" id="last" value="上一题" />
+				<input type="button" id="next" value="下一题" />
+				<input type="button" id="go" value="查看结果" />
+			</div>
+			<div class="left">
+				我的结果 : 左脑优势左脑主要从事逻辑思维，负责语言、判断、分析、推理等，可以称作“学术脑”、“语言脑”。左脑优势的人理性，说服能力强，对语言阅读、分析推理的活动更感兴趣。如果你是左脑优势者，可能是出色的会计师或规划者。世界上大部分人都是左脑优势者，如若能开发右脑的潜力，你会在创造力方面有较大的竞争力。
+			</div>
+			<div class="rigth">
+				我的结果 : 右脑优势右脑主要从事形象思维，是创造力的源泉，又被称作“艺术脑”。右脑优势的人感性，擅长直觉、想象，在美术、音乐等艺术领域有很高的悟性。而且图像记忆能力高，爱做白日梦。如果你是右脑优势者，那么创作、艺术、开放的环境更能发掘你的潜力，你可以试着培养这方面的爱好和技能。
+			</div>
+		</div>
+		<script type="text/javascript">
+			(function() {
+				var play = document.getElementById("play");
+				var again = document.getElementById("again");
+				var next = document.getElementById("next");
+				var last = document.getElementById("last");
+				var left = document.querySelector(".left");
+				var rigth = document.querySelector(".rigth");
+				var go = document.getElementById("go");
+				var content = document.querySelector(".content");
+				var oul = document.querySelector(".content ul");
+				var oli = document.querySelector(".content ul li");
+				var liH = oli.offsetHeight;
+				var i;
+
+				function location() {
+					if(oul.scrollTop > 80) {
+						last.style.display = 'block';
+					} else {
+						last.style.display = 'none';
+					}
+					if(oul.scrollTop > 890) {
+						next.style.display = 'none';
+						go.style.display = 'block';
+					} else {
+						next.style.display = 'block';
+						go.style.display = 'none';
+					}
+				}
+
+				play.addEventListener("click", function() {
+					content.style.display = 'block';
+					play.style.display = 'none';
+					again.style.display = 'block';
+				});
+				next.addEventListener("click", function() {
+					oul.scrollTop += 90;
+					location();
+					console.log(oul.scrollTop);
+				});
+				last.addEventListener("click", function() {
+					oul.scrollTop -= 90;
+					location();
+					console.log(oul.scrollTop);
+				});
+				go.addEventListener("click", function() {
+					i = Math.round(Math.random(0));
+					console.log(i);
+					if(i == 0) {
+						left.style.display = 'block';
+					} else {
+						rigth.style.display = 'block';
+					}
+					go.disabled = true;
+				})
+				again.addEventListener("click", function() {
+					window.location.reload();
+				})
+			})()
+		</script>
+	</body>
+
+</html>
