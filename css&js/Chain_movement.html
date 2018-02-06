@@ -1,0 +1,92 @@
+
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>链式运动</title>
+		<style type="text/css">
+			div {
+				width: 100px;
+				height: 100px;
+				margin: 10px;
+				background-color: red;
+				filter: aplha(opacity:50);
+				opacity:0.5;
+			}
+		</style>
+		<script type="text/javascript">
+			//当加载完成是运行改函数
+			window.onload = function(){
+				var odiv=document.getElementById("div1");
+				
+				//鼠标监听事件
+				odiv.addEventListener("mouseover",function(){
+					console.log(1);
+					start(odiv,'width',500,function(){
+						console.log(2);
+						start(odiv,'height',500,function(){
+							console.log(3);
+							start(odiv,'opacity',100);
+						});
+					})
+				})
+				
+				odiv.addEventListener("mouseout",function(){
+					start(odiv,'width',100,function(){
+						start(odiv,'height',100,function(){
+							start(odiv,'opacity',50);
+						});
+					})
+				})
+			}
+			//获取对象的属性信息
+			function getstyle(obj,shuxing){
+				//兼容性选择
+				if(obj.currentStyle){
+					return obj.currentStyle[shuxing];
+				}else{
+//					return getComputedStyle(obj,false)[shuxing];
+					return getComputedStyle(obj,false).getPropertyValue(shuxing);
+				}
+			}
+			//编写运动函数
+			function start(obj,shuxing,mubiao,fn){
+				//关闭原有的定时器
+				clearInterval(obj.timer);
+				//开启定时器
+				obj.timer=setInterval(function(){
+					//兼容性选择
+					if(shuxing=='opacity'){
+						var iCu=parseInt(parseFloat(getstyle(obj,''+shuxing))*100);
+					}else{
+						var iCu=parseInt(getstyle(obj,''+shuxing));
+					}
+					//添加动画的初始速度
+					var isSpeed=(mubiao-iCu)/8;
+					isSpeed=isSpeed>0?Math.ceil(isSpeed):Math.floor(isSpeed);
+					//判断是否达到目标
+					if(iCu==mubiao){
+						clearInterval(obj.timer);
+						if(fn){
+							fn();
+						}
+					}else{
+						if(shuxing=='opacity'){
+							obj.style.filter='alpha(opacity:'+(iCu+isSpeed)+')';
+							obj.style.opacity=(iCu+isSpeed)/100;
+						}else{
+							obj.style[shuxing]=iCu+isSpeed+'px';
+						}
+					}
+					
+				},30);
+			}
+		</script>
+	</head>
+
+	<body>
+		<div id="div1"></div>
+	</body>
+
+</html>
