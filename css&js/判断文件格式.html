@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<input class="input" type="text" />
+		<button class="btn" onclick="check()">文件格式</button>
+	</body>
+	<script type="text/javascript">
+		var oInput = document.getElementsByClassName('input')[0];
+		
+		function check(){
+			//获取文本
+			var text;
+			text = ""+oInput.value;
+			
+			//获取最后一个点（.）的位数
+			var index1=text.lastIndexOf(".");
+			
+			//获取文本的总长度
+			var index2=text.length;
+			
+			//截取 介于  最后一个点 和 最后一个字符之间的字符串
+			var suffix=text.substring(index1+1,index2);
+			
+			alert(suffix);
+		}
+		
+	</script>
+</html>
