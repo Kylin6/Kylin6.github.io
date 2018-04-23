@@ -1,0 +1,115 @@
+body{
+	background: url(http://www.zaarapp.com/assets/images/background-3.png) center top no-repeat fixed;
+	background-size: cover;
+}
+/*头部导航栏*/
+.navbar{
+	position: fixed;
+	background-color: #fff;
+	width: 100%;
+	z-index: 1111;
+	box-shadow: 2px 2px 2px rgba(0,0,0,0.5)
+}
+.img{
+	vertical-align: middle;
+}
+.navbar-brand{
+	padding: 4px 10px;
+    /*height: 70px;*/
+}
+.collapse{
+	float: right;
+}
+.nav li a{
+	margin: 20px;
+	color: #000000;
+    padding: 6px 10px;
+}
+.nav li .login_menu{
+	margin-left: 0;
+	margin-right: 0;
+	border-color: #119ddc;
+}
+.nav li .signup_menu{
+	color: #fff;
+}
+/*轮播图*/
+.carousel{
+	padding-top: 70px;
+}
+.carousel-indicators li{
+	background-color: #000;
+}
+.carousel-indicators .active{
+	background-color: #139ddc;
+}
+.banner_right {
+    position: absolute;
+    top: 171px;
+    right: 6%;
+    text-align: right;
+    width: 50%;
+}
+.profile-circle.img1{
+	background: url(http://www.zaarapp.com/assets/images/b2.png) center top no-repeat fixed;
+	background-size: cover;
+    height: 665px;
+}
+.profile-circle.img2{
+	background: url(http://www.zaarapp.com/assets/images/b1.png) center top no-repeat fixed;
+	background-size: cover;
+    height: 665px;
+}
+/*Amazing*/
+.amazing{
+	background: url(http://www.zaarapp.com/assets/images/background-2.png);
+	background-size: cover;
+	padding: 80px 0;
+}
+.container {
+    width: 1170px;
+}
+h1,h6{
+	text-align: center;
+}
+.amazing-hr{
+	width: 12%;
+	border-top: 1px solid #179FDC;
+}
+.amazing .row{
+	margin-top: 78px;
+}
+.amazing .phone-img{
+	margin: auto;
+}
+.amazing .phone-img .ful-width1{
+	/*width: 100%;*/
+}
+.col-md-10,.col-md-2{
+	margin-top: 47px;
+}
+.text-right{
+	text-align: right;
+}
+.text-left{
+	text-align: left;
+}
+.amazing .col-md-2 img {
+    width: 100%;
+}
+.amazing .col-md-2{
+	border: 1px solid #179FDC;
+    border-radius: 50%;
+    text-align: center;
+    padding: 12px;
+    font-size: 20px;
+    color: #179FDC;
+    margin-top: 59px;
+}
+/*best*/
+.home-iframe{
+	width: 560px;
+    height: 315px;
+    border-width: 0;
+}
+ 

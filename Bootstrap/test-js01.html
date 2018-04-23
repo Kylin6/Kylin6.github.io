@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>tab闭包</title>
+		<style type="text/css">
+			.a{
+				width: 60px;
+				height: 30px;
+			}
+			.b{
+				width: 500px;
+				height: 300px;
+			}
+			.red{
+				background-color: red; 
+				display: inline-block;
+			}
+			.blue{
+				background-color: blue;
+				display: inline-block;
+			}
+			.yellow{
+				background-color: yellow;
+				display: inline-block;
+			}
+			.red1{
+				background-color: red;
+				display: block;
+			}
+			.blue1{
+				background-color: blue;
+				display: none;
+			}
+			.yellow1{
+				background-color: yellow;
+				display: none;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="a red">首页</div><div class="a blue">新闻</div><div class="a yellow">动态</div>
+		<div class="b red1">首页</div>
+		<div class="b blue1">新闻</div>
+		<div class="b yellow1">动态</div>
+		<script type="text/javascript">
+			var a=document.querySelectorAll(".a");
+			var b=document.querySelectorAll(".b");
+			
+			for(var i=0;i<a.length;i++)
+			{
+				var j=i;
+				(function(j){
+					a[j].onclick=function(){
+						for(var i=0;i<a.length;i++)
+						{
+							b[i].style.display="none";
+						}
+						b[j].style.display="block";
+					}
+				})(i)
+			}
+		</script>
+	</body>
+</html>

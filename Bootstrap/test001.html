@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>网站模仿1</title>
+		<link rel="stylesheet" type="text/css" href="bootstrap-3.3.7-dist/css/bootstrap.min.css"/>
+		<script src="bootstrap-3.3.7-dist/js/bootstrap.min.js" type="text/javascript" charset="utf-8"></script>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<style type="text/css">
+			h1,p{
+				text-align: center;
+			}
+			.clearfix:after{
+				content: "";
+				display: block;
+				clear: both;
+			}
+			.nav{
+				width: 30%;
+				height: 100%;
+				position: fixed;
+				left: 0;
+				border: 1px solid #000;
+			}
+			.header{
+				padding: 20px;
+			}
+			.logo{
+				border: 1px solid #000;
+				float: left;
+			}
+			ul{
+				margin: 0;
+			}
+			li{
+				list-style-type: none;
+				float: left;
+				margin: 0 20px;
+				border: 1px solid #000;
+			}
+			.center-block {
+			  display: block;
+			  margin-left: auto;
+			  margin-right: auto;
+			}
+			.conter{
+				height: calc(100% - 98px);
+			    position: relative;
+			    width: 100%;
+			    border: 1px solid #000;
+			}
+			.text{
+				width: 100px;
+				height: 200px;
+				position: absolute;
+				top: 0;
+				right: 0;
+				left: 0;
+				bottom: 0;
+				margin: auto;
+			}
+			.container-fluid{
+				border: 1px solid #000;
+				width: 70%;
+				float: right;
+			}
+			.Carousel{
+				height: 500px;
+				border: 1px solid #000;
+			}
+			.ad{
+				height: 200px;
+				border: 1px solid #000;
+			}
+			.login{
+				height: 200px;
+				width: 60%;
+				margin: auto;
+				border: 1px solid #000;
+			}
+			.Selected{
+				width: 70%;
+				height: 300px;
+				margin: auto;
+				border: 1px solid #000;
+			}
+			.box{
+				border: 1px solid #000;
+			}
+			.Sele{
+				border: 1px solid #000;
+				height: 200px;
+				padding: 20px;
+			}
+		</style>
+	</head>
+	<body>
+		<!--模仿网站 https://www.starbucks.com.cn/-->
+		<div class="nav">
+			<div class="header clearfix">
+				<div class="logo">logo</div>
+				<div class="meun">
+					<ul>
+						<li>1</li>
+						<li>2</li>
+						<li>3</li>
+					</ul>
+				</div>
+			</div>
+			<div class="conter">
+				<div class="text">xxxxxxxxxx</div>
+			</div>
+		</div>
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-md-12 Carousel">轮播图</div>
+			</div>
+			<div class="row">
+				<div class="col-md-4 ad">广告1</div>
+				<div class="col-md-4 ad">广告2</div>
+				<div class="col-md-4 ad">广告3</div>
+			</div>
+			<div class="row">
+				<div class="col-md-12">
+					<div class="login clearfix">
+						<div style="width: 50%;height:100%;border: 1px solid #000;float: left;">
+							<h1>俱乐部</h1>
+							<p>开启您的星享之旅，星星越多、会员等级越高、好礼越丰富。了解更多 ›</p>
+							<button class="btn btn-default" type="submit">登录</button>
+							<button class="btn btn-default" type="submit">注册</button>
+						</div>
+						<div style="width: 50%;height:100%;border: 1px solid #000;float: right;">图片</div>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-12 box">
+					<div class="Selected container">
+						<h1>星巴克精选</h1>
+						<p>在星巴克天猫旗舰店发现更多咖啡心意</p>
+						<div class="row">
+							<div class="col-md-3 Sele">精选1</div>
+							<div class="col-md-3 Sele">精选2</div>
+							<div class="col-md-3 Sele">精选3</div>
+							<div class="col-md-3 Sele">精选4</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-12 box">
+					<div class="Selected container">
+						<h1>1912 派克街 | 咖啡星讲堂</h1>
+						<p>了解更多星巴克咖啡文化</p>
+						<div class="row">
+							<div class="col-md-3 Sele">精选1</div>
+							<div class="col-md-3 Sele">精选2</div>
+							<div class="col-md-3 Sele">精选3</div>
+							<div class="col-md-3 Sele">精选4</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>
