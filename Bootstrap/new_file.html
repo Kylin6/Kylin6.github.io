@@ -1,0 +1,333 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8">
+		<title>瀑布流的实现</title>
+		<style>
+			/*使用通配符将内外边距都设置为零, 这样看着好看*/
+			
+			* {
+				margin: 0px;
+				padding: 0px;
+			}
+			/*将主容器的布局方式设置为相对布局*/
+			
+			#content {
+				position: relative;
+			}
+			
+			.box {
+				padding: 5px;
+				float: left;
+			}
+			/*将承载图片的容器定制颜色及边框大小和圆角*/
+			
+			.boximg {
+				padding: 5px;
+				box-shadow: 0 0 5px #ccc;
+				border: 1px solid #cccccc;
+				border-radius: 5px;
+			}
+			/*定制图片尺寸*/
+			
+			.boximg img {
+				width: 250px;
+				height: auto;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="content">
+			<div class="box">
+				<div class="boximg">
+					<img src="img/1.jpg" alt="">
+				</div>
+			</div>
+			<div class="box">
+				<div class="boximg">
+					<img src="img/2.jpg" alt="">
+				</div>
+			</div>
+			<div class="box">
+				<div class="boximg">
+					<img src="img/3.jpg" alt="">
+				</div>
+			</div>
+			<div class="box">
+				<div class="boximg">
+					<img src="img/4.jpg" alt="">
+				</div>
+			</div>
+			<div class="box">
+				<div class="boximg">
+					<img src="img/5.jpg" alt="">
+				</div>
+			</div>
+			<div class="box">
+				<div class="boximg">
+					<img src="img/6.jpg" alt="">
+				</div>
+			</div>
+			<div class="box">
+				<div class="boximg">
+					<img src="img/7.jpg" alt="">
+				</div>
+			</div>
+			<div class="box">
+				<div class="boximg">
+					<img src="img/8.jpg" alt="">
+				</div>
+			</div>
+			<div class="box">
+				<div class="boximg">
+					<img src="img/9.jpg" alt="">
+				</div>
+			</div>
+			<div class="box">
+				<div class="boximg">
+					<img src="img/10.jpg" alt="">
+				</div>
+			</div>
+			<div class="box">
+				<div class="boximg">
+					<img src="img/11.jpg" alt="">
+				</div>
+			</div>
+			<div class="box">
+				<div class="boximg">
+					<img src="img/12.jpg" alt="">
+				</div>
+			</div>
+			<div class="box">
+				<div class="boximg">
+					<img src="img/13.jpg" alt="">
+				</div>
+			</div>
+			<div class="box">
+				<div class="boximg">
+					<img src="img/14.jpg" alt="">
+				</div>
+			</div>
+			<div class="box">
+				<div class="boximg">
+					<img src="img/15.jpg" alt="">
+				</div>
+			</div>
+		</div>
+
+		<script type="text/javascript">
+			
+			//窗口加载执行函数
+			window.onload = function() {
+				
+				//执行waterflow（）方法
+				waterFlow("content", "box");
+				
+				//创建对象（此处类似于json ）, 包含data数组 ，data 数组中包含多个图片对象
+				var dataInt = {
+					'data': [{
+						'src': '1.jpg'
+					}, {
+						'src': '2.jpg'
+					}, {
+						'src': '3.jpg'
+					}, {
+						'src': '4.jpg'
+					}, {
+						'src': '5.jpg'
+					}, {
+						'src': '6.jpg'
+					}, {
+						'src': '7.jpg'
+					}, {
+						'src': '8.jpg'
+					}, {
+						'src': '9.jpg'
+					}, {
+						'src': '10.jpg'
+					}, {
+						'src': '11.jpg'
+					}, {
+						'src': '12.jpg'
+					}, {
+						'src': '13.jpg'
+					}, {
+						'src': '14.jpg'
+					}, {
+						'src': '15.jpg'
+					}]
+				};
+
+                //窗口滚动函数
+				window.onscroll = function() {
+					
+					//
+					if(checkscrollside()) {
+						
+						// 获取 class 为 content 的div
+						var oParent = document.getElementById('content'); 
+						
+						//遍历储存图片的数组
+						for(var i = 0; i < dataInt.data.length; i++) {
+							
+							//创建元素节点  创建div
+							var oPin = document.createElement('div');
+							
+							//给创建的div 设置class 的名字
+							oPin.className = 'box';
+							
+							//将刚刚创建的 div 添加到  content div中
+							oParent.appendChild(oPin);
+							
+							//创建  div
+							var oBox = document.createElement('div');
+							
+							//给创建的div 添加 class 
+							oBox.className = 'boximg';
+							
+							// 将这个创建的div 添加到  box 这个div中
+							oPin.appendChild(oBox);
+							
+							//创建 img  
+							var oImg = document.createElement('img');
+							
+							//给创建的img 添加图片的路径
+							oImg.src = 'img/' + dataInt.data[i].src;
+							
+							//将创建的img 添加到 boximg 这个div中
+							oBox.appendChild(oImg);
+						}
+						waterFlow("content", "box");
+					};
+				}
+			}
+
+				    	
+
+
+			function checkscrollside() {
+				//获取 class 为 content 的 div
+				var oParent = document.getElementById('content');
+				
+				//得到 class 为  box 的 所有 div 并形成数组（chirldArr）
+				var aPin = getAllChirld(oParent, 'box');
+				
+				
+				//创建【触发添加块框函数waterfall()】的高度：最后一个块框的距离网页顶部+自身高的一半(实现未滚到底就开始加载)
+				var lastPinH = aPin[aPin.length - 1].offsetTop + Math.floor(aPin[aPin.length - 1].offsetHeight / 2); 
+				
+				//获取窗口不可见内容的高度
+				var scrollTop = document.documentElement.scrollTop || document.body.scrollTop; //注意解决兼容性
+				
+				//获取窗口的高度
+				var documentH = document.documentElement.clientHeight;
+				
+				//到达指定高度后 返回true，触发waterflow()函数
+				return(lastPinH < scrollTop + documentH) ? true : false; 
+			}
+
+
+			// waterFlow() 方法  包含两个参数（parent == "content" ， chirld == "box"）
+			function waterFlow(parent, chirld) {
+				
+				//获取父级div, 最外级容器 （ class 值为 content 的 div ）
+				var wparent = document.getElementById(parent); 
+				
+				//执行  getAllChirld 方法  （同样含有两个参数传入）  getAllChirld（）方法写在这个方法的后面  , 这个方法是为了获取到所有的class为box的容器div
+		 		var allArr = getAllChirld(wparent, chirld);
+		 		
+		 		//获取屏幕宽度
+				var wscreenWidth = document.documentElement.clientWidth; 
+				
+				//获取所有 class 为 content 下的所有标签
+				var wchirldWidth = wparent.getElementsByTagName("*"); 
+				
+				//这是一个Math算法, 目的是将小数转变为整数,从而可以知道每行最多容纳几张图片，屏幕宽度 / class 为 box 的div 的宽度
+				var num = Math.floor(wscreenWidth / wchirldWidth[0].offsetWidth); 
+
+                //固定每行摆放个数 和上下左右边距
+				wparent.style.cssText = 'width:' + wchirldWidth[0].offsetWidth * num + 'px;margin:0 auto'; 
+				
+				//调用后面的 getMinHeightOfCols()方法，获得每行的最小高度（即当前行中高度最小的图片）
+				getMinHeightOfCols(allArr, num);
+			}
+
+           
+            //getAllChirld() 方法  包含两个参数  （parent == wparent == "content"  classname == chirld == "box"）
+			function getAllChirld(parent, classname) {
+				
+				//获取 class 为 content 的div 下所有的标签
+				var wchirld = parent.getElementsByTagName("*");
+				
+				//创建 chirldArr 数组
+				var chirldArr = [];
+				
+				//遍历wchirld, 将其中className等于classname(传进来的参数)相同的标签放入数组chirldArr中
+				for(var i = 0; i < wchirld.length; i++) {
+					
+					if(wchirld[i].className == classname) {
+						//因为是位push所以没放进去一个, 都是在数组的最后一个
+						chirldArr.push(wchirld[i]);
+					}
+				}
+				//返回该数组
+				return chirldArr;
+			}
+
+            
+            // getMinHeightOfCols（）方法  来获取当前行内所包含图片高度最小的容器  参数（chirdArr 为 上个方法所返回的 chirldArr数组  num为每行最多容纳的图片数量）
+			function getMinHeightOfCols(chirdArr, num) {
+				
+				//创建数组, 用来盛放每一行的高度
+				var onlyOneColsArr = [];
+				
+				//遍历chirldArr 数组
+				for(var i = 0; i < chirdArr.length; i++) {
+
+					if(i < num) {
+						//num为传进来的参数, 即为每行放图片的张数, 此步骤的目的是为了将第一行每张图片的高度遍历出来存放如新数组
+						onlyOneColsArr[i] = chirdArr[i].offsetHeight;
+					} 
+					
+					else {
+						
+						//定义minHeightOfCols 并赋值为最小值，当大于每行存放的图片个数时进入该方法, Math.min.apply这个方法是为了得到数组中的最小值（不懂的可以自己百度这个方法）
+						var minHeightOfCols = Math.min.apply(null, onlyOneColsArr);
+						
+						//调用 getminIndex（）方法，传入onlyOneColsArr 数组 以及最小值，此方法的目的是为了得到最小高度图片的下表, 也就是在每行的第几张, 具体方法见下面
+						var minHeightOfindex = getminIndex(onlyOneColsArr, minHeightOfCols);
+						
+						//定义每个 class 为 box 的布局方式为绝对布局
+						chirdArr[i].style.position = "absolute";
+						
+						//得到下一行图片应放的高度（上一行图片中的最小高度）
+						chirdArr[i].style.top = minHeightOfCols + "px";
+						
+						//得到下一行图片应放于那个位置（上一行图片中高度最小的图片的left值）
+						chirdArr[i].style.left = chirdArr[minHeightOfindex].offsetLeft + "px";
+						
+						//将两张图片高度相加得到一个新的高度用来进行下一次的计算
+						onlyOneColsArr[minHeightOfindex] += chirdArr[i].offsetHeight;
+					}
+				}
+
+			}
+			//此方法是为了进行最小高度图片下标的确定（min 为minHeightOfCols）
+			function getminIndex(onlyOneColsArr, min) {
+				
+				//遍历传进来的高度数组
+				for(var i in onlyOneColsArr) {
+					//如果高度等于最小高度, 返回i即为该图片下标
+					if(onlyOneColsArr[i] == min) {
+						return i;
+					}
+				}
+			}
+		</script>
+
+	</body>
+
+</html>

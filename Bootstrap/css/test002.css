@@ -1,6 +1,9 @@
-body{
-	background: url(http://www.zaarapp.com/assets/images/background-3.png) center top no-repeat fixed;
-	background-size: cover;
+ul{
+	padding: 0;
+	margin: 0;
+}
+li{
+	list-style-type: none;
 }
 /*头部导航栏*/
 .navbar{
@@ -34,11 +37,12 @@ body{
 	color: #fff;
 }
 /*轮播图*/
-.carousel{
+/*.carousel{
 	padding-top: 70px;
-}
+}*/
 .carousel-indicators li{
 	background-color: #000;
+	border: none;
 }
 .carousel-indicators .active{
 	background-color: #139ddc;
@@ -60,21 +64,35 @@ body{
 	background-size: cover;
     height: 665px;
 }
+.slider_conter{
+	position: absolute;
+	width: 50%;
+	top: 155px;
+	left: 8%;
+}
+.slider_conter h1{
+	text-align: left;
+	margin-bottom:40px;
+}
+.slider_conter p{
+	font-size: 25px;
+}
 /*Amazing*/
 .amazing{
 	background: url(http://www.zaarapp.com/assets/images/background-2.png);
 	background-size: cover;
 	padding: 80px 0;
 }
-.container {
+/*.container {
     width: 1170px;
-}
+}*/
 h1,h6{
 	text-align: center;
 }
 .amazing-hr{
 	width: 12%;
 	border-top: 1px solid #179FDC;
+	margin: 20px auto;
 }
 .amazing .row{
 	margin-top: 78px;
@@ -107,9 +125,122 @@ h1,h6{
     margin-top: 59px;
 }
 /*best*/
+.best{
+	background: url(http://www.zaarapp.com/assets/images/background-3.png) center top no-repeat fixed;
+	background-size: cover;
+	color: #fff;
+	padding: 80px 0;
+}
+.best .col-md-6:first-child {
+    top: 95px;
+    position: relative;
+}
 .home-iframe{
 	width: 560px;
     height: 315px;
     border-width: 0;
 }
- 
+.head-why{
+	font-size: 45px;
+}
+.best_ans{
+	border: 1px solid #fff;
+	margin: 10px 15px;
+}
+.best_ans p:first-child {
+    padding: 5px;
+    margin: 0;
+}
+/*modules*/
+.modules{
+	background-color: #fff;
+	padding: 80px 0;
+	text-align: center;
+}
+.modules span.col-md-3 {
+    border: 1px solid #1aa0dd;
+    border-radius: 50%;
+    padding: 15px;
+    left: 29%;
+    margin-bottom: 20px;
+    width: 65px;
+}
+.modules img{
+	width: 100%;
+}
+/*gallery*/
+.gallery{
+	background-color: #fff;
+}
+.gallery .margin_zero{
+	padding: 0 15px;
+}
+.gallery .padding_zero{
+	padding: 0;
+	position: relative;
+}
+.gallery .ful-width{
+	width: 100%;
+	height: 300px;
+}
+.gallery .overlay{
+	position: absolute;
+	width: 100%;
+	top: 75px;
+	text-align: center;
+	color: #fff;
+}
+.gallery .overlay p{
+	color: #119ddc;
+}
+/*Easy*/
+.Easy{
+	background-color: #fff;
+	padding: 80px 0;
+}
+.Easy h1{
+	text-align: left;
+}
+/*free_trial*/
+.free_trial{
+	padding: 50px 0;
+	background: url(http://www.zaarapp.com/assets/images/pattern.jpg) 0 167px;
+	background-size: cover;
+}
+.free_trial p{
+	color: #BFFFFF;
+    padding: 15px 0;
+    margin: 0;
+    font-size: 18px;
+    letter-spacing: 2px;
+}
+/*footers*/
+.footer{
+	background-color: #fff;
+	padding: 20px 0;
+}
+.footer li{
+	padding-bottom: 20px;
+}
+li .fa{
+	color: #757777;
+	padding-right: 30px;
+	font-size: 20px;
+}
+.footer_left_section{
+	
+}
+.footer_center_section{
+	width: 33.333333%;
+	float: none;
+	margin: 0 auto;
+}
+.footer_center_section li:first-child{
+	margin-top: 44px;
+}
+.footer_right_section{
+	float: right;
+}
+.footer_right_section li:last-child{
+	padding: 0;
+}
