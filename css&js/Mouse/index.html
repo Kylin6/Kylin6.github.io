@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<title>打地鼠</title>
+		<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+		<style type="text/css">
+			/*.bg {
+				background: url(image/bg.jpg) no-repeat center top;
+				position: relative;
+				width: 1000px;
+				height: 600px;
+			}*/
+			
+			body {
+				background: url(image/bg.jpg) no-repeat;
+				font-size: 12px;
+				font-family: "宋体";
+			}
+			
+			#form {
+				width: 280px;
+				height: 170px;
+				position: absolute;
+				top: 10px;
+				left: 460px;
+			}
+			
+			#note {
+				width: 170px;
+				height: 170px;
+				position: absolute;
+				left: 740px;
+				top: 10px;
+				color: blue;
+			}
+			
+			#author {
+				width: 350px;
+				height: 140px;
+				position: absolute;
+				left: 740px;
+				top: 180px;
+				color: blue;
+			}
+			
+			#tablle {
+				width: 350px;
+				height: 350px;
+				position: absolute;
+				left: 260px;
+				top: 200px;
+				cursor: url(image/hammer_48px_1157892_easyicon.net.png), auto;
+			}
+		</style>
+	</head>
+
+	<body>
+		<!--第一部分-->
+		<div id="form">
+			<table border="0" cellspacing="0" cellpadding="0">
+				<tr>
+					<th>游戏时间</th>
+					<th><input type="" name="" value="1" size="10" id="totalTime"/> 分钟</th>
+				</tr>
+				<tr>
+					<td>倒计时间：</td>
+					<td><div id="countTime"></div></td>
+				</tr>
+				<tr>
+					<td>地鼠出现间隔：</td>
+					<td><input type="" name="" value="1" size="10" id="showTime" /> 秒钟</td>
+				</tr>
+				<tr>
+					<td>停留时间：</td>
+					<td><input type="" name="" value="1" size="10" id="stayTime" /> 秒钟</td>
+				</tr>
+				<tr>
+					<td>得分情况</td>
+					<td>
+						<div id="score"></div>
+					</td>
+				</tr>
+				<tr>
+					<td><input type="button" name="" id="" value="开始游戏" onclick="startGame()" /></td>
+					<td><input type="button" name="" id="" value="结束游戏" onclick="endGame()" /></td>
+				</tr>
+			</table>
+		</div>
+		<!--第二部分-->
+		<div id="note">
+			<p align="center">游戏说明</p>
+			<p>点击开始按钮，地鼠就出现了，然后点击地鼠打地鼠，可以打了，打中给你100分，没打中，扣你200分，你还不来试试吗？</p>
+		</div>
+		<!--第三部分-->
+		<div id="author">
+			<p>作者：*** <br />指导老师：***</p>
+		</div>
+		<!--第四部分-->
+		<div id="tablle">
+			<table border="2" cellspacing="1" cellpadding="1">
+				<tr>
+					<td><img src="image/00.jpg" alt="0" /></td>
+					<td><img src="image/00.jpg" alt="1" /></td>
+					<td><img src="image/00.jpg" alt="2" /></td>
+					<td><img src="image/00.jpg" alt="3" /></td>
+					<td><img src="image/00.jpg" alt="4" /></td>
+				</tr>
+				<tr>
+					<td><img src="image/00.jpg" alt="5" /></td>
+					<td><img src="image/00.jpg" alt="6" /></td>
+					<td><img src="image/00.jpg" alt="7" /></td>
+					<td><img src="image/00.jpg" alt="8" /></td>
+					<td><img src="image/00.jpg" alt="9" /></td>
+				</tr>
+				<tr>
+					<td><img src="image/00.jpg" alt="10" /></td>
+					<td><img src="image/00.jpg" alt="11" /></td>
+					<td><img src="image/00.jpg" alt="12" /></td>
+					<td><img src="image/00.jpg" alt="13" /></td>
+					<td><img src="image/00.jpg" alt="14" /></td>
+				</tr>
+				<tr>
+					<td><img src="image/00.jpg" alt="15" /></td>
+					<td><img src="image/00.jpg" alt="16" /></td>
+					<td><img src="image/00.jpg" alt="17" /></td>
+					<td><img src="image/00.jpg" alt="18" /></td>
+					<td><img src="image/00.jpg" alt="19" /></td>
+				</tr>
+				<tr>
+					<td><img src="image/00.jpg" alt="20" /></td>
+					<td><img src="image/00.jpg" alt="21" /></td>
+					<td><img src="image/00.jpg" alt="22" /></td>
+					<td><img src="image/00.jpg" alt="23" /></td>
+					<td><img src="image/00.jpg" alt="24" /></td>
+				</tr>
+			</table>
+		</div>
+
+	</body>
+	<script type="text/javascript">
+//		var time = null;
+//
+//		function start() {
+//			console.log("1");
+//			clearInterval(time);
+//			time = setInterval(function() {
+//				var x = 1,
+//					y = 25;
+//				var rand = parseInt(Math.random() * y);
+//				$("img").attr("src", "image/00.jpg").eq(rand).attr("src", "image/01.jpg");
+//			}, 1000)
+//			$('img').click(function() {
+//				$("img").eq(this.alt).attr("src", "image/02.jpg");
+//			})
+//		}
+//
+//		function end() {
+//			clearInterval(time);
+//			$("img").attr("src", "image/00.jpg");
+//		}
+		//声明变量
+		var totalTime,showTime,stayTime,score;
+		
+		function startGame(){
+			init();
+			countTime();
+			showMouse();
+		}
+		
+		
+		//函数：获取到表单中的文本框的值，赋值给变量
+		function init(){
+			score=0;
+			totalTime=document.getElementById('totalTime').value*60;
+			showTime=document.getElementById("showTime").value;
+			stayTime=document.getElementById("stayTime").value;
+		}
+		//倒计时开始
+		//根据游戏时间来倒计时
+		function countTime(){
+//			console.log(totalTime)
+			//如果倒计时到0的时候，游戏自动结束
+			if(totalTime<1){
+				//结束游戏
+				return;
+			}
+			else
+			{
+			totalTime--;
+			//吧变量放入前段的倒计时中
+			document.getElementById('countTime').innerHTML=totalTime+'秒';
+			//window对象下自带的一个函数，计时器函数
+			//第一个参数是多久调用以下这个函数
+			//多久 毫秒
+			setTimeout(countTime,1000);	
+			}
+		}
+		function showMouse(){
+			var i=parseInt(Math.random()*24);
+			document.querySelectorAll("img")[i].src="image/01.jpg";
+			var t1=setTimeout(showMouse,showTime*1000);
+			var t2=setInterval(function(){
+				document.querySelectorAll("img")[i].src="image/00.jpg";
+			},stayTime*1000);
+			document.querySelectorAll("img")[i].addEventListener("click",function(){
+				document.querySelectorAll("img")[i].src="image/02.jpg";
+				score+=100;
+				document.getElementById("score").innerHTML=score+"";
+			},false)
+		}
+		function stayMouse(i){
+			document.querySelectorAll("img")[i].src="image/00.jpg";
+		}
+	</script>
+
+</html>
