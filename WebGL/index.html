@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>黑兔子网站</title>
+		<link rel="icon" href="BlackRabbit_ico.ico">
+		<!--<link rel="stylesheet" type="text/css" href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" />-->
+		<link rel="stylesheet" type="text/css" href="css/font-awesome.min.css"/>
+		<link rel="stylesheet" href="layui/css/layui.css" media="all" />
+		<link rel="stylesheet" type="text/css" href="css/css.css" />
+		<link rel="stylesheet" type="text/css" href="css/header-login.css" />
+		<link rel="stylesheet" type="text/css" href="css/home.css" />
+		<script type="text/javascript" src="js/jquery-2.2.4.min .js"></script>
+		<script type="text/javascript" src="layui/layui.all.js" ></script>
+
+	</head>
+
+	<body>
+		<!--顶部-->
+		<div class="header layui-layout layui-layout-admin">
+
+			<div class="layui-header header header-demo">
+				<div class="layui-main mag0">
+					<a href="#" class="logo"><img src="img/logo.jpg" style="width: 30px; height: auto;"/></a>
+				</div>
+				<ul class="layui-nav topLevelMenus">
+					<li class="layui-nav-item layui-this">
+						<a href="#1">首页</a>
+					</li>
+					<li class="layui-nav-item">
+						<a href="#2">模型精选</a>
+					</li>
+					<li class="layui-nav-item">
+						<a href="#3">关于我们</a>
+					</li>
+					<li class="layui-nav-item">
+						<a href="#4">三维展厅</a>
+					</li>
+				</ul>
+				<!--搜索-->
+				<div class="component">
+					<input type="text" name="title" required lay-verify="required" placeholder="请输入标题" autocomplete="off" class="layui-input search">
+					<i class="layui-icon">&#xe615;</i>
+				</div>
+				<!-- 顶部右侧菜单 -->
+				<div class="login"><span id="login">登录</span>|<span>注册</span></div>
+				<!--<ul class="layui-nav top_menu">
+					<li class="layui-nav-item" id="userInfo">
+						<a href="javascript:;"><img src="img/rabbit.jpg" class="layui-nav-img userAvatar" width="35" height="35"><cite class="adminName">BlackRabbit</cite></a>
+					</li>
+				</ul>-->
+			</div>
+		</div>
+		<!--基本展示-->
+		<a id="1"></a>
+		<div class="conter">
+			<div class="top">
+				<div class="title">基于WebGL的BIM三维模型展示</div>
+				<div class="text">基于WebGL的BIM三维模型展示平台，<br /> 用正确的方式看建筑世界，
+					<br /> 为筑梦者提供实现梦想的平台。
+				</div>
+			</div>
+		</div>
+		<!--模型精选-->
+		<a id="2"></a>
+		<div class="Model_selection">
+			<div class="Model_title"><span><img src="img/diamond.png"/></span> 模型精选 <span><img src="img/diamond.png"/></span></div>
+			<!--轮播-->
+			<div id="box">
+				<div class="slide">
+					<ul>
+						<li>
+							<a href="#">
+								<div class="cont_text">
+									<div class="image"><img src="img/001.jpg" /></div>
+									<div class="text_nr">
+										<h3>宏盛企业</h3>
+										<p>承袭沙坪企业集团47年的专业造房经验，宜居•莱茵城秉承“宜居”的理念，以考究的品质，高端的配套。</p>
+									</div>
+									<div class="carousel_foot">
+										<span class="like"><i class="fa fa-heart" style="color: red;"></i></span>
+										<span class="follow"><i class="fa fa-thumbs-o-up"></i></span>
+										<span class="chat"><i class="fa fa-commenting-o"></i></span>
+
+									</div>
+								</div>
+							</a>
+						</li>
+						<li>
+							<a href="#">
+								<div class="cont_text">
+									<div class="image"><img src="img/003.jpg" /></div>
+									<div class="text_nr">
+										<h3>天峰企业</h3>
+										<p>天峰国际新城占地面积近十万平方米，建筑面积四十万平方米，是天峰公司倾力打造的阳泉地标式建筑群。</p>
+									</div>
+									<div class="carousel_foot">
+										<span class="like"><i class="fa fa-heart" ></i></span>
+										<span class="follow"><i class="fa fa-thumbs-o-up" style="color: red;"></i></span>
+										<span class="chat"><i class="fa fa-commenting-o"></i></span>
+
+									</div>
+								</div>
+							</a>
+						</li>
+						<li>
+							<a href="#">
+								<div class="cont_text">
+									<div class="image"><img src="img/004.jpg" /></div>
+									<div class="text_nr">
+										<h3>宏德集团</h3>
+										<p>小区规划总建筑面积是7万多平米，容积率1.28，绿化率30%，共有39幢楼宇组成，住宅户数为426户，机动车位433个。</p>
+									</div>
+									<div class="carousel_foot">
+										<span class="like"><i class="fa fa-heart" style="color: red;"></i></span>
+										<span class="follow"><i class="fa fa-thumbs-o-up"></i></span>
+										<span class="chat"><i class="fa fa-commenting-o"></i></span>
+
+									</div>
+								</div>
+							</a>
+						</li>
+					</ul>
+					<div class="arraw">
+						<a href="javascript:;" class="next"></a>
+						<a href="javascript:;" class='prev'></a>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!--关于我们-->
+		<a id="3"></a>
+		<div id="about_us">
+			<div id="title_ours">
+				<canvas class="canvas"></canvas>
+				<div class="help"></div>
+				<div class="ui">
+					<input class="ui-input" type="text" />
+				</div>
+				<div class="overlay">
+					<div class="tabs-labels"><span class="tabs-label"></span><span class="tabs-label"></span><span class="tabs-label"></span></div>
+					<ul class="tabs-panel commands">
+					</ul>
+				</div>
+			</div>
+			<div id="content">
+				<div id="title">
+					<h1>&nbsp;&nbsp;关于我们&nbsp;&nbsp;</h1></div>
+				<div id="word1">
+					<p><span style="font-size:1.5rem ;color: #ABE6F4;">黑兔子网站</span>，是一家在互联网高端图形软件领域专业从事网页3D引擎的研发，以及3D虚拟现实网页作品设计的高新技术网站。</P>
+					<p>我们利用 HTML5+WebGL 技术为国内企事业单位提供增值互联网+服务的服务商，也是国内最主要的WebGL开发服务商，我们开创了国内WebVR应用的先河，我们的作品将颠覆人们对传统网络的认识，一种全新的网站将带给您无与伦比的非凡体验，它将带您走进一个看似虚拟但却真实的立体世界。</p>
+					<p>你 能 想 象 吗 ？ 未 来 人 们 将 怎 样 浏 览 网 站 ！</p>
+					<p>未来还会是图片+文字的普通网页吗？</p>
+					<p>沉浸式体验必将成为趋势！VR网站、三维网站、全息网站、裸眼3D网站、体感互动网站！我们认为：未来就应该是这样的网站！我们的作品将颠覆人们对传统网站的认识，一种全新的网站将带给您无与伦比的非凡体验，它将带您走进一个看似虚拟但却真实的梦幻世界。</p>
+				</div>
+				<div id="word2">
+					<span style="font-size:1.5rem ;color: #ABE6F4;">专注“互联网虚拟现实”技术研发</span>
+					<p>网页虚拟现实技术研发、网页三维引擎研发、布料物理动力学引擎研发、物理力学引擎研发、空气动力学引擎研发；3D模型JSON编码技术研发、模型几何网格化编码技术研发...</p>
+					<p>国内专业研发VR互联网的技术团队， 多项技术成果和技术储备在国内处于绝对领先地位！</p>
+				</div>
+				<div id="word3">
+					<span style="font-size:1.5rem ;color: #ABE6F4;">核心技术</span>
+					<p>★引擎： 国内唯一的WebVR图形引擎！</p>
+					<p>★物理： 基于H5构架，JavaScript开发的物理动力学引擎算法！</p>
+					<p>★编码：XEOGL开发的模型编码系统，对三维模型进行H5标准的JSON二进制重建</p>
+					<p>★法线： 在H5下，使用canvas高精度绘制三维模型的法线引擎算法</p>
+				</div>
+				<div id="word4">
+					<span style="font-size:1.5rem ;color: #ABE6F4;">我们的团队</span>
+					<p>黑兔子网站核心开发团队由5位专业知识型并热爱IT行业的科学人才组成，我们的团队是一支育满活力的强大生力军，热爱工作，热爱生活，具有创新意识的年轻力量。我们喜欢探索前沿科技的发展和未来科学的方向，不但有独到的见解，还很执着地探求知识的海洋。</p>
+					<img src="img/2ewfs.jpg" />
+				</div>
+			</div>
+
+			<div id="three">
+				<p>Excellent front-end development team</p>
+				<!--<i class="fa fa-cloud-upload"></i>-->
+				<i class="fa fa-cloud-upload"></i>
+				<i class="fa fa-diamond"></i>
+				<i class="fa fa-gift"></i>
+
+			</div>
+		</div>
+
+		<!--三维展厅-->
+		<a id="4"></a>
+		<div id="hall_3d">
+			<div id="title_top">
+				<div id="particles-js" class="clearxfix">
+				<h1>未来&nbsp;&nbsp;已来</h1>
+				<p>结合B/S 架构、空间索引、前端多线程等技术使之能在Web页面上流畅的展示BIM模型</p>
+				</div>	
+			</div>
+			<div id="content">
+				<div id="title">
+					<h1>&nbsp;&nbsp;三维展厅</h1></div>
+				<div id="exhibition" class="clearfix">
+					<!--<div class="fagimg">
+						<img src="img/00uf.jpg" alt="" />
+						<p>段记服饰企业文化虚拟展厅</p>
+					</div>
+					<div class="fagimg">
+						<img src="img/lichtraum-1666224__340.jpg" alt="" />
+						<p>古典风格的虚拟店铺</p>
+					</div>
+					<div class="fagimg">
+						<img src="img/gallery-2681241__340.jpg" alt="" />
+						<p>中室华西装饰样板间</p>
+					</div>
+					<div class="fagimg">
+						<img src="img/real-estate-2342587_640.jpg" alt="" />
+						<p>筑大可视化DIY家装</p>
+					</div>
+					<div class="fagimg">
+						<img src="img/00uf.jpg" alt="" />
+						<p>段记服饰企业文化虚拟展厅</p>
+					</div>
+					<div class="fagimg">
+						<img src="img/lichtraum-1666224__340.jpg" alt="" />
+						<p>古典风格的虚拟店铺</p>
+					</div>
+					<div class="fagimg">
+						<img src="img/gallery-2681241__340.jpg" alt="" />
+						<p>中室华西装饰样板间</p>
+					</div>
+					<div class="fagimg">
+						<img src="img/real-estate-2342587_640.jpg" alt="" />
+						<p>筑大可视化DIY家装</p>
+					</div>-->
+				</div>
+			</div>
+		</div>
+
+		<!-- 尾页 -->
+		<footer>
+			<div id="foot1">
+				<img src="img/logo.jpg" />
+				<p>加入我们：88888888 </p>
+				<p>问题交流群：88888888</p>
+				<p>版权所有：黑兔子</p>
+				<p>黑兔子网站致力于打造一个优秀的BIM三维模型展示平台</p>
+			</div>
+			<div id="foot2">
+				<p> Copyright @ 2018                                                                                                                                            China: +86 2 33 44 55 66 US: +11 222 333 444 BlackRabbit@shark.com</p>
+			</div>
+		</footer>
+		<script src="js/js.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			//页面加载   获取全部信息
+			$(document).ready(function(){
+				
+			
+			
+			$(function() {
+				$.ajax({
+					type: "get", //请求方式
+					url: "model.json", //地址，就是json文件的请求路径
+					dataType: "json", //数据类型可以为 text xml json  script  jsonp
+					success: function(result) { //返回的参数就是 action里面所有的有get和set方法的参数
+						addBox(result);
+					},
+					error: function() {
+						alert("no")
+					}
+				});
+
+			});
+
+			function addBox(result) {
+				//result是一个集合,所以需要先遍历
+				console.log(result);
+				$.each(result.data, function(index, obj) {
+					$("#exhibition").append("<div class='fagimg' data-go='3dshow.html?src="+obj['str']+"&desc="+obj['desc']+"&device="+obj['device']+"' data-src='" + obj['str'] + "' data-title='" + obj['title'] + "'>" + "<img class='img' src=" + obj['url'] + "><p>" + obj['title'] + "</p></div>");
+
+				});
+				$(".fagimg").click(function() {
+					var modelTitle = $(this).attr('data-title');
+					var modelSrc = $(this).attr('data-src');
+					var modelGo=$(this).attr('data-go');
+					console.log(this);
+					console.log(modelSrc)
+					layer.open({
+						title: modelTitle,
+						type: 2,
+						content: modelGo,
+						area: ['800px', '600px'],
+						maxmin: true
+					})
+				});
+			}
+			
+			$("#login").click(function(){
+				window.location.href="../Model/page/login/login.html"
+			})
+			
+			});
+		</script>
+	</body>
+
+</html>

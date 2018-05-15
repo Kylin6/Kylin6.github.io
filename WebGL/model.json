@@ -1,0 +1,61 @@
+{
+	"data": [
+		{
+			"title": "办公室3D模型",
+			"str": "office/scene.gltf",
+			"url": "../day0409_zhong/img/3dshow01.png",
+			"device": "排风系统",
+			"gui_show": true,
+			"desc": "排风系统正常。"
+		}, {
+			"title": "套间3D模型",
+			"str": "shadow_play_goes_3d/scene.gltf",
+			"url": "img/3dshow02.png",
+			"device": "温湿度检测",
+			"gui_show": true,
+			"desc": "实时温度26°C,湿度适宜。"
+		}, {
+			"title": "别墅3D模型",
+			"str": "rippon_lea_-_inside_out/scene.gltf",
+			"url": "img/3dshow03.png",
+			"device": "摄像头",
+			"gui_show": true,
+			"desc": "摄像头正常运行。"
+		}, {
+			"title": "卧室3D模型",
+			"str": "van_gogh_room/scene.gltf",
+			"url": "img/3dshow04.png",
+			"device": "气体检测",
+			"gui_show": true,
+			"desc": "无有害气体。"
+		}, {
+			"title": "露天小屋3D模型",
+			"str": "the_branch_house/scene.gltf",
+			"url": "img/3dshow05.png",
+			"device": "智能灯光",
+			"gui_show": true,
+			"desc": "柔和灯光。"
+		}, {
+			"title": "小镇3D模型",
+			"str": "shadow_play_goes_3d/scene.gltf",
+			"url": "img/3dshow06.png",
+			"device": "路灯",
+			"gui_show": true,
+			"desc": "每天6点准时开启。"
+		}, {
+			"title": "街区3D模型",
+			"str": "shadow_play_goes_3d/scene.gltf",
+			"url": "img/3dshow07.png",
+			"device": "街道监控",
+			"gui_show": true,
+			"desc": "正常运行。"
+		}, {
+			"title": "工厂3D模型",
+			"str": "shadow_play_goes_3d/scene.gltf",
+			"url": "img/3dshow08.png",
+			"device": "气体检测",
+			"gui_show": true,
+			"desc": "无有害气体。"
+		}
+	]
+}

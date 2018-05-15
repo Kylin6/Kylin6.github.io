@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>添加注释</title>
+		<script type="text/javascript" src="js/xeogl/xeogl.min.js"></script>
+		<script type="text/javascript" src="js/xeogl/pin.js"></script>
+		<script type="text/javascript" src="js/xeogl/annotation.js"></script>
+		<link rel="stylesheet" type="text/css" href="css/xeogl/annotation-style.css" />
+		<script type="text/javascript" src="js/xeogl/dat.gui.min.js"></script>
+		<script type="text/javascript" src="js/xeogl/glTFModel.js"></script>
+		<script src="js/xeogl/axisHelper.js"></script>
+		<script src="js/xeogl/OBJModel.js"></script>
+		<script type="text/javascript" src="js/geometry/vectorTextGeometry.js"></script>
+	</head>
+
+	<body>
+		<div id="dat-gui-container">
+			<script type="text/javascript">
+				//				var model = new xeogl.GLTFModel({
+				//					id: "tank",
+				//					src: "shadow_play_goes_3d/scene.gltf",
+				//					materialWorkflow: "MetallicMaterial"
+				//				});
+
+				var model;
+				//获取url中的参数
+				function getUrlParam(name) {
+					var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");  //构造一个含有目标参数的正则表达式对象
+					var r = window.location.search.substr(1).match(reg); //匹配目标参数
+					if(r != null) return decodeURI(r[2]);
+					return null; //返回参数值
+				}
+//				function getQueryString(name) {   
+//				    var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");   
+//				    var r = window.location.search.substr(1).match(reg);   
+//				    if (r != null) return decodeURI(r[2]); 
+//				    return null;
+//				}
+				var str = getUrlParam('src');
+				var desc = getUrlParam('desc');
+				var device = getUrlParam('device');
+				check();
+
+				function check() {
+					//获取文本
+					var text;
+					text = "" + str;
+
+					//获取最后一个点（.）的位数
+					var index1 = text.lastIndexOf(".");
+
+					//获取文本的总长度
+					var index2 = text.length;
+
+					//截取 介于  最后一个点 和 最后一个字符之间的字符串
+					var suffix = text.substring(index1 + 1, index2);
+					//					alert(suffix);
+					if(suffix == 'gltf') {
+						model = new xeogl.GLTFModel({
+							//					src: "shadow_play_goes_3d/scene.gltf"
+							src: str
+						});
+					} else if(suffix == 'obj') {
+						model = new xeogl.OBJModel({
+							//					src: "shadow_play_goes_3d/scene.gltf"
+							src: str
+						});
+					}
+
+				}
+
+				//---------------------------------------------------------------------------------
+				// 设置初始摄像机位置
+				//---------------------------------------------------------------------------------
+
+				var scene = model.scene;
+				var camera = scene.camera;
+				//				camera.eye = [389.7743835449219, 239.3394012451172, 23.223623275756836];
+				//				camera.look = [0.000003814697265625, 64.58052062988281, 4.9520416259765625];
+				//				camera.up = [-0.4082976281642914, 0.9126505851745605, -0.019139183685183525];
+				camera.eye = [8000, 2000, 11000];
+				var spinning = false;
+				var Helper = true;
+				model.on("loaded", function() {
+					scene.on("tick", function() { // Slowly orbit the camera
+						if(spinning) {
+							camera.orbitYaw(-0.1);
+						}
+					});
+				});
+
+				//				new xeogl.CameraControl();
+				var cameraControl = new xeogl.CameraControl();
+
+				//---------------------------------------------------------------------------------
+				// 当模型加载时，根据模型创建带有注释的故事。
+				//---------------------------------------------------------------------------------
+				var annotations = [];
+				model.on("loaded", function() {
+					//----------------------------------
+					// 注释
+					//----------------------------------
+					annotations = [
+						new xeogl.Annotation({
+							type: "xeogl.Annotation",
+							primIndex: 1000,
+							bary: [0.05, 0.16, 0.79],
+							occludable: false,
+							glyph: "A",
+							title: device,
+							desc: desc,
+							//点击当前按钮时相机的位置
+							eye:[4500,6000,4000],
+							look: [-0.39, 6.84, -9.18],
+							up: [0.01, 0.97, 0.24],
+							pinShown: false,
+							labelShown: false,
+						})
+					];
+					var cameraFlight = new xeogl.CameraFlightAnimation({
+						duration: 1
+					});
+					//---------------------------------------------------------------------------------
+					// 极其低效的菜单玩注释
+					//---------------------------------------------------------------------------------
+					var gui = new dat.GUI({
+						autoPlace: false,
+						top: 0,
+						right: 10,
+						width: 350
+					});
+					document.getElementById('dat-gui-container').appendChild(gui.domElement);
+					var Menu = function() {
+						this.message = "xeogl.Environment";
+						this["自动巡查"] = false;
+						this["坐标轴提示"] = true;
+
+						this.message = "xeogl.Annotation";
+						for(var i = 0; i < annotations.length; i++) {
+							var annotation = annotations[i];
+							this["设备信息" + (i+1) + "标题"] = annotation.title;
+							this["设备信息" + (i+1) + "描述"] = annotation.desc;
+							this["设备信息" + (i+1) + "标题是否显示"] = annotation.pinShown;
+							this["设备信息" + (i+1) + "描述是否显示"] = annotation.labelShown;
+							this["设备信息" + (i+1) + "是否显示"] = annotation.occludable;
+						}
+						var self = this;
+						var update = function() {
+
+							if(self["自动巡查"] !== spinning) {
+								spinning = self["自动巡查"];
+							}
+							if(self["坐标轴提示"] !== Helper) {
+								Helper = self["坐标轴提示"];
+								xyz.setVisible(Helper);
+								console.log(Helper, xyz);
+							}
+
+							for(var i = 0; i < annotations.length; i++) {
+								var annotation = annotations[i];
+								annotation.title = self["设备信息" + (i+1) + "标题"];
+								annotation.desc = self["设备信息" + (i+1) + "描述"];
+								annotation.pinShown = self["设备信息" + (i+1) + "标题是否显示"];
+								annotation.labelShown = self["设备信息" + (i+1) + "描述是否显示"];
+								annotation.occludable = self["设备信息" + (i+1) + "是否显示"];
+							}
+							requestAnimationFrame(update);
+						};
+						update();
+					};
+					var menu = new Menu();
+
+					var lightsFolder = gui.addFolder('隐藏');
+					lightsFolder.add(menu, '自动巡查', true);
+					lightsFolder.add(menu, '坐标轴提示', true);
+					lightsFolder.open();
+					for(var i = 0; i < annotations.length; i++) {
+						var annotation = annotations[i];
+						var folder = gui.addFolder('设备信息 ' + (i+1));
+						folder.add(menu, "设备信息" + (i+1) + "标题", annotation.title);
+						folder.add(menu, "设备信息" + (i+1) + "描述", annotation.desc);
+						folder.add(menu, "设备信息" + (i+1) + "标题是否显示", annotation.pinShown);
+						folder.add(menu, "设备信息" + (i+1) + "描述是否显示", annotation.labelShown);
+						folder.add(menu, "设备信息" + (i+1) + "是否显示", annotation.occludable);
+						folder.add({
+							"查看设备位置": (function() {
+								var i2 = i;
+								return function() {
+									var annotation;
+									var selected;
+									for(var i = 0; i < annotations.length; i++) {
+										annotation = annotations[i];
+										selected = i == i2;
+										if(selected) {
+											cameraFlight.flyTo(annotation);
+										}
+										annotation.labelShown = selected;
+										menu["设备信息" + (i+1) + ".标题是否显示"] = selected;
+									}
+								};
+							})()
+						}, '查看设备位置');
+						if(i === 0) {
+							folder.open();
+						}
+					}
+
+					function flyTo() {
+						var annotation;
+						var selected;
+						for(var i = 0; i < annotations.length; i++) {
+							annotation = annotations[i];
+							selected = annotation.id === this.id;
+							if(selected) {
+								cameraFlight.flyTo(annotation);
+							}
+							annotation.labelShown = selected;
+							menu["annotation" + i + ".labelShown"] = selected;
+						}
+					}
+					for(var i = 0, len = annotations.length; i < len; i++) {
+						annotations[i].on("pinClicked", flyTo);
+					}
+				});
+
+				var xyz = new xeogl.AxisHelper({
+					lookat: camera,
+					visible: true,
+					size: [200, 200]
+				});
+				console.log(xyz);
+			</script>
+	</body>
+
+</html>

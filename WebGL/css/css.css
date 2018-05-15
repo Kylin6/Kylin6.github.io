@@ -1,0 +1,213 @@
+
+.clearfix::after{
+	content: "";
+	display: table;
+	clear: both;
+}
+* {
+	margin: 0;
+	padding: 0;
+}
+
+canvas {
+	display: block;
+	vertical-align: bottom;
+}
+#content{
+	width: 1000px;
+	height: auto;
+	margin: auto;
+}
+
+
+/* ---- 关于我们 ---- */
+#about_us{padding-top: 60px;}
+#title_ours {
+	position: relative;
+	width: 100%;
+	height: 237px;
+	background: -webkit-linear-gradient(top, rgb(203, 235, 219) 0%, rgb(55, 148, 192) 120%);
+	background: -moz-linear-gradient(top, rgb(203, 235, 219) 0%, rgb(55, 148, 192) 120%);
+	background: -o-linear-gradient(top, rgb(203, 235, 219) 0%, rgb(55, 148, 192) 120%);
+	background: -ms-linear-gradient(top, rgb(203, 235, 219) 0%, rgb(55, 148, 192) 120%);
+	background: linear-gradient(top, rgb(203, 235, 219) 0%, rgb(55, 148, 192) 120%);
+}
+
+.canvas {
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	margin: auto;
+}
+
+input {
+	display: none;
+}
+#about_us{
+	background-color: #F4F4F4;
+}
+#word1{
+	width: 1000px;
+	padding: 10px 0px 10px 50px;
+}
+#word1 p{
+	text-indent: 2em;	
+	
+}
+#word2{
+	width: 1000px;
+	padding: 10px 0px 10px 50px;
+}
+#word2 p{
+	text-indent: 2em;	
+	
+}
+#word3{
+	width: 800px;
+	padding: 10px 0px 10px 50px;
+}
+#word3 p{
+	text-indent: 2em;
+	
+}
+#word4{
+	width: 1000px;
+	padding: 10px 0px 10px 50px;
+}
+#word4 p{
+	text-indent: 2em;	
+	
+}
+#word4 img{
+	text-align: center;
+	width: 600px;
+	height: auto;
+	padding: 20px 0px 20px 80px;
+}
+#three{
+	background-color: #BCBCBC;
+	width: 100%;
+	height: 150px;
+	text-align: center;
+}
+#three p{
+	text-align: center;
+	padding: 20px 0px 20px 0px;
+}
+#three i{
+	font-size: 40px;
+	padding: calc(1%/2) calc(50%/6) 0 calc(50%/6);
+
+}
+
+/* ---- 三维展厅 ---- */
+#hall_3d{padding-top: 60px;}
+#particles-js {
+	position: relative;
+	width: 100%;
+	height: 200px;
+	background-color: #16A085;
+	text-align: center;
+}
+
+#title_top {
+	width: 100%;
+	height: 200px;
+	position: relative;
+}
+
+
+#title_top h1 {
+	font-size: 3.5rem;
+	width: 35%;  
+  height: 40%; 
+  margin: auto;  
+  position: absolute; 
+  text-align: center; 
+  top: 0; left: 0; bottom: 25%; right: 0;  
+	color: #FFF;
+	font-family: teko;
+	font-weight: 400;
+	text-shadow: 5px 5px #5F6D72;
+	text-transform: uppercase;
+}
+
+#title_top p {
+	text-align: center;
+	font-size: 1.5rem;
+	width: 100%;
+	height: 40%;  
+  overflow: auto;  
+  margin: auto;  
+  position: absolute;  
+  top:60%; left: 0; bottom: 0; right: 0;  
+	color: #FFF;
+	font-family: teko;
+	font-weight: 400;
+	text-shadow: 2px 2px #5F6D72;
+	text-transform: uppercase;
+}
+
+
+#content #title{
+	font-size: 1rem;
+	font-family: kartika;
+	/*font-weight: 400;*/
+	text-transform: uppercase;
+	border-left: 6px solid #2AD2C9;
+	margin: 10px 0px 20px 20px;
+}
+#exhibition {
+	height: auto;
+}
+.fagimg{
+	width: 200px;
+	height: 200px;
+	float: left;
+	margin: calc(10%/6);
+}
+.fagimg img{
+	width: 200px;
+	height: 150px;
+}
+.fagimg p{
+	font-size: 1rem;
+	/*color:#2AD2C9;*/
+	font-family: teko;
+	text-align: center;
+}
+
+
+/* ---- 尾页 ---- */
+footer{
+	width: 100%;
+	height: auto;
+}
+footer p{
+	font-size: 12px;
+	color: #fff;
+}
+#foot1{
+	width: 100%;
+	height: 150px;
+	background-color: #666;
+	text-align: center;
+}
+#foot1 img{
+	width: 30px;
+	height: auto;
+	margin: 10px 0 10px 0;
+}
+#foot1 p{
+	text-indent: 2em;	
+	/*padding: 0px 0px 0px 120px;*/	
+}
+footer #foot2{
+	width: 100%;
+	height: 40px;
+	background-color: #16A085;
+	padding-top: 20px;
+	text-align: center;
+}

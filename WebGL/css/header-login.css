@@ -1,0 +1,86 @@
+*{
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+/*body{
+	min-width: 1000px;
+}*/
+.clearxfix::after{
+	clear: both;
+	content: "";
+	display: block;
+}
+
+.layui-layout-admin .layui-header {
+	background-color: #16A085;
+	width: 100%;
+	position: fixed;
+}
+
+.layui-main{
+	float: left;
+	line-height: 60px;
+	padding: 0 20px;
+}
+
+.topLevelMenus {
+	float: left;
+}
+
+.layui-nav .layui-nav-item a{
+	color: rgba(255,255,255,0.5);
+}
+
+.topLevelMenus li.layui-nav-item:hover {
+	background-color: rgba(221, 221, 221, 0.2);
+}
+
+.layui-nav .layui-this:after {
+	bottom: -5px!important;
+}
+
+.header .layui-nav-bar {
+	top: 60px !important;
+}
+
+.topLevelMenus .layui-nav-item.layui-this {
+	background-color: rgba(0, 0, 0, 0.5);
+}
+.top_menu{
+	float: right;
+}
+.top_menu.layui-nav .layui-this:after {
+	width: 0px;
+}
+
+.top_menu .layui-nav-bar,
+.mobileTopLevelMenus .layui-nav-bar {
+	background-color: rgba(95,184,120);
+}
+/*搜索*/
+.component{
+	position: absolute;
+	width: 260px;
+	height: 30px;
+	top: 25%;
+	right: 13%;
+}
+.search{
+	width: 250px;
+	height: 30px;
+	text-indent:5px;
+	border-radius: 20px;
+}
+.layui-icon{
+	position: absolute;
+	top: 8px;
+	right: 20px;
+}
+/*登录注册*/
+.login{
+	width: 70px;
+    position: absolute;
+    right: 20px;
+    line-height: 60px;
+}
