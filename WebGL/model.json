@@ -3,7 +3,7 @@
 		{
 			"title": "办公室3D模型",
 			"str": "office/scene.gltf",
-			"url": "../day0409_zhong/img/3dshow01.png",
+			"url": "img/3dshow01.png",
 			"device": "排风系统",
 			"gui_show": true,
 			"desc": "排风系统正常。"
