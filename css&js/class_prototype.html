@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>js 借用构造函数继承</title>
+		<style type="text/css">
+			body {
+				background-color: #11113f;
+				color: white;
+				font-family: 'Petit Formal Script', cursive;
+				overflow: hidden;
+			}
+			
+			.title {
+				position: absolute;
+				text-align: center;
+				top: 50%;
+				left: 50%;
+				-webkit-transform: translate3d(-50%, -50%, 0);
+				transform: translate3d(-50%, -50%, 0);
+				z-index: 0;
+				font-size: 1.6em;
+			}
+			
+			.snow {
+				position: absolute;
+				background-color: #fff;
+				border-radius: 100%;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="title">
+			<h1>Happy Holidays</h1>
+		</div>
+		<script type="text/javascript">
+			(function(){
+				var winW = window.innerWidth;
+				var winH = window.innerHeight;
+				var num = 500;
+				var snowArray = new Array();
+				
+				function random(min,max,isInt){
+					var a = min + Math.random() * (max - min);
+					return isInt ? parseInt(a):a;
+				}
+				//创建雪的类的构造函数
+				function Snow(){
+					this.init();
+					this.draw();
+				}
+				//雪的类的参数初始化
+				Snow.prototype.init = function(){
+					//设置初始化的坐标、速度、风、大小、透明度
+					this.x = random(0,winW,true);
+					this.y = random(-winH,0,true);
+					this.speed = random(0.5,3);
+					this.wind = random(-2,2);
+					this.size = random(3,6,true);
+					this.alpha = random(0.2,1);
+				}
+				//雪类的绘制
+				Snow.prototype.draw = function(){
+					//雪花添加到页面，并且初始化赋值
+					this.o = document.createElement('div');
+					this.o.className = "snow";
+					document.body.appendChild(this.o);
+					this.o.style.width = this.o.style.height = this.size + "px";
+					this.o.style.opacity = this.alpha;
+				}
+				//雪的类的位置更新
+				Snow.prototype.update = function(){
+					this.x += this.wind;
+					this.y += this.speed;
+					if(this.y > winH){
+						this.init();
+					}
+					this.o.style.left = this.x + "px";
+					this.o.style.top = this.y + "px";
+				}
+				//生成雪粒子
+				for(var i = 0; i < num;i++){
+					var snow = new Snow();
+					snowArray.push(snow);
+				}
+				//运动雪粒子
+				(function(){
+					for(var i = 0; i < snowArray.length;i++){
+						snowArray[i].update();
+					}
+					//requestAnimationFrame专为动画量身打造的setTimeout   arguments.callee 的主要用途是保存函数参数
+					requestAnimationFrame(arguments.callee);
+				}());
+			}());
+		</script>
+	</body>
+</html>
