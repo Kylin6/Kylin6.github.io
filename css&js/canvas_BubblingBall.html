@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
 	<head>
 		<meta charset="UTF-8">
@@ -15,8 +15,10 @@
 		function init(){
 			//设置画布
 			var canvas = document.getElementById("mycanvas");
-			canvas.width=document.documentElement.clientWidth;
-			canvas.height=document.documentElement.clientHeight;
+//			canvas.width=document.documentElement.clientWidth;
+//			canvas.height=document.documentElement.clientHeight;
+			canvas.width=window.innerWidth;
+			canvas.height=window.innerHeight;
 			var context = canvas.getContext("2d");
 			var width = canvas.width;
 			var height = canvas.height;
@@ -27,11 +29,13 @@
 				this.red = parseInt(Math.random()*255);
 				this.green = parseInt(Math.random()*255);
 				this.yellow = parseInt(Math.random()*255);
+				
 				this.globalAlpha = 1;
 				//定义绘制小球的方法
 				this.paint = function(){
 					context.globalAlpha = this.globalAlpha;
-					context.fillStyle = 'rgb('+this.red+','+this.green+','+this.yellow+')';
+//					context.fillStyle = 'rgb('+this.red+','+this.green+','+this.yellow+')';
+					context.fillStyle = 'rgba(249,204,226)';
 					context.beginPath();
 					context.arc(this.x,this.y,20,0,Math.PI*2,true);
 					context.fill();
@@ -62,8 +66,7 @@
 					balls[i].animate();
 				}
 			},10)
-		}
-		
+		}		
 	</script>
 	</body>
 </html>
