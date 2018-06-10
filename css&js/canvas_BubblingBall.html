@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+        html,body{
+            margin: 0;
+        }
+    </style>
+	</head>
+	<body onload="init()" onresize="init()">
+	<canvas id="mycanvas"></canvas>
+	<script type="text/javascript">
+		function init(){
+			//设置画布
+			var canvas = document.getElementById("mycanvas");
+			canvas.width=document.documentElement.clientWidth;
+			canvas.height=document.documentElement.clientHeight;
+			var context = canvas.getContext("2d");
+			var width = canvas.width;
+			var height = canvas.height;
+			//创建小球构造函数
+			function Ball(h){
+				this.x = Math.random()*(width-20)+10;
+				this.y = h+20;
+				this.red = parseInt(Math.random()*255);
+				this.green = parseInt(Math.random()*255);
+				this.yellow = parseInt(Math.random()*255);
+				this.globalAlpha = 1;
+				//定义绘制小球的方法
+				this.paint = function(){
+					context.globalAlpha = this.globalAlpha;
+					context.fillStyle = 'rgb('+this.red+','+this.green+','+this.yellow+')';
+					context.beginPath();
+					context.arc(this.x,this.y,20,0,Math.PI*2,true);
+					context.fill();
+				}
+				//定义小球动画方法
+				this.num = Math.random();
+				this.animate = function(){
+					this.y = this.y - this.num;
+					this.globalAlpha = this.globalAlpha - 0.001;
+				}
+			}
+			//定义数组，将创建的小球都放入
+			var balls = [];
+			setInterval(function(){
+				//创建小球对象，并且把创建好的小球都丢入数组中
+				var ball = new Ball(height);
+				balls.push(ball);
+			},10)
+			//设置动画，定时将小球移动，并且调整透明度
+			setInterval(function(){
+				context.clearRect(0,0,width,height);
+				//遍历数组中的小球，每一个小球调用两个方法。
+				for (var i = 0;i<balls.length;i++) {
+					if(balls[i].globalAlpha <= 0){
+						balls.splice(i,1);
+					}
+					balls[i].paint();
+					balls[i].animate();
+				}
+			},10)
+		}
+		
+	</script>
+	</body>
+</html>
