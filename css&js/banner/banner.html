@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>js 轮播图</title>
+		<style>
+			body,ul{
+				margin: 0;
+				padding: 0;
+			}
+			li{
+				list-style: none;
+			}
+			.banner{
+				position: relative;
+				width: 860px;
+				height: 500px;
+				margin: 50px auto;
+				background-color: red;
+				border: 10px solid #fff;
+				border-radius: 6px;
+				box-shadow: 0px 0px 20px 2px #000;
+			}
+			.banner ul{
+				position: relative;
+				width: 100%;
+				height: 100%;
+			}
+			.banner ul li{
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 860px;
+				height: 500px;
+				transition: all 1s;
+				overflow: hidden;
+			}
+			.banner ul .right{
+				right: 0;
+				width: 0;
+			}
+			/*.banner ul .left{
+				left: 0;
+				width: 0px;
+			}*/
+			.banner ul li img{
+				width: 860px;
+				height: 500px;
+				transition: all 1s;
+			}
+			.banner .btn{
+				position: absolute;
+				right: 20px;
+				bottom: 20px;
+				width: 80px;
+				height: 40px;
+				background-color: #fff;
+				border-radius: 6px;
+				overflow: hidden;
+			}
+			.banner .btn span{
+				float: left;
+				display: block;
+				width: 40px;
+				height: 40px;
+				line-height: 40px;
+				text-align: center;
+				font-size:20px;
+				cursor: pointer;
+			}
+			.banner .btn .on{
+				background-color: #ddd;
+				cursor: default;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="banner">
+			<ul>
+				<li><img src="img/img1.jpg" alt="" /></li>
+				<li class="right"><img src="img/img2.jpg" alt="" /></li>
+				<li class="right"><img src="img/img3.jpg" alt="" /></li>
+				<li class="right"><img src="img/img4.jpg" alt="" /></li>
+				<li class="right"><img src="img/img5.jpg" alt="" /></li>
+				<li class="right"><img src="img/img6.jpeg" alt="" /></li>
+			</ul>
+			<div class="btn">
+				<span class="on"> < </span>
+				<span> > </span>
+			</div>
+		</div>
+		<script>
+			var aLi = document.querySelectorAll(".banner li"),
+				aSpan = document.querySelectorAll(".btn span");
+			var count = 0,
+				len = aLi.length - 1;
+			var oldDate = new Date(),
+				newDate,time;
+			var btn = true; 
+			aSpan[0].onclick = function(){
+				btn = false;
+				run(btn);
+				/*
+				newDate = new Date();
+				time = newDate - oldDate;
+				oldDate = newDate;
+				if(time >= 1000){
+					if(count >0 && count <= len){
+						aLi[count].className="right";
+						count--;
+						aLi[count].className="";
+//						if(count){
+//							aSpan[0].className="";
+//							
+//						}else{
+//							aSpan[0].className="on";
+//						}
+						aSpan[0].className = count ? "" : "on";
+//						if(count == len){
+//							aSpan[1].className="on";
+//							
+//						}else{
+//							aSpan[1].className="";
+//						}
+						aSpan[1].className = count==len ? "on" : "";
+					}
+				}
+				*/
+				
+			}
+			aSpan[1].onclick = function(){
+				btn = true;
+				run(btn);
+				/*
+				newDate = new Date();
+				time = newDate - oldDate;
+				oldDate = newDate;
+				console.log(time);
+				if(time >= 1000){
+					if(count >=0 && count < len){
+						aLi[count].className="left";
+						count++;
+						aLi[count].className="";
+//						if(count){
+//							aSpan[0].className="";
+//							
+//						}else{
+//							aSpan[0].className="on";
+//						}
+						aSpan[0].className = count ? "" : "on";
+//						if(count == len){
+//							aSpan[1].className="on";
+//							
+//						}else{
+//							aSpan[1].className="";
+//						}
+						aSpan[1].className = count==len ? "on" : "";
+					}
+				}
+					
+			*/	
+			}
+			run = function(btn){
+				newDate = new Date();
+				time = newDate - oldDate >= 1000 ? true : false;
+				if(btn){
+					if(time && count < len){
+						aLi[count].className="left";
+						count++;
+					}
+				}else{
+					if(time && count>0){
+						aLi[count].className="right";
+						count--;
+					}
+						
+				}
+				console.log(count);
+				aLi[count].className= "";
+				aSpan[0].className = count ? "" : "on";
+				aSpan[1].className = (count==len) ? "on" : "";
+				oldDate = newDate;
+			}
+		</script>
+	</body>
+</html>
